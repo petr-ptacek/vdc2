@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import type { AccordionContainerEmits, AccordionContainerProps } from "./types";
-import { computed, ref }                                         from "vue";
+import type { AccordionEmits, AccordionProps } from "./types";
+import { computed, ref }                       from "vue";
 
 const props = withDefaults(
-	defineProps<AccordionContainerProps>(),
+	defineProps<AccordionProps>(),
 	{
 		opened: undefined
 	}
 );
 
-const emit = defineEmits<AccordionContainerEmits>();
+const emit = defineEmits<AccordionEmits>();
 
 // OPENED STATE INTERNAL VALUE
 const _opened = ref(false);
@@ -54,7 +54,11 @@ function headerClickHandler() {
 			'is-open': _openedModelValue
 		}"
 	>
-		<div class="accordion__header" @click="headerClickHandler">
+		<div
+			class="accordion__header"
+			:class="headerClass"
+			@click="headerClickHandler"
+		>
 			<div class="accordion__title">
 				<slot name="title">
 					{{ title }}
@@ -73,7 +77,10 @@ function headerClickHandler() {
 			</button>
 		</div>
 
-		<div class="accordion__body">
+		<div
+			class="accordion__body"
+			:class="bodyClass"
+		>
 			<div>
 				<slot />
 			</div>

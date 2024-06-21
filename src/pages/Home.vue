@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { AccordionContainer }  from "@/components/AccordionContainer";
 import AppFooter               from "@/components/AppFooter.vue";
 import AppHeader               from "@/components/AppHeader.vue";
 import ComplexDatePicker       from "@/components/ComplexDatePicker/ComplexDatePicker.vue";
@@ -32,7 +31,7 @@ const cities = ref([
 				<template #contentLeft>
 					<div class="h-full overflow-auto">
 						<div class="space-y-2 py-2 px-1">
-							<AccordionContainer>
+							<AppAccordion>
 								<template #title>
 									<div class="font-bold">Obecné</div>
 								</template>
@@ -80,9 +79,9 @@ const cities = ref([
 										</div>
 									</div>
 								</div>
-							</AccordionContainer>
+							</AppAccordion>
 
-							<AccordionContainer>
+							<AppAccordion>
 								<template #title>
 									<div class="font-bold">Datum cesty</div>
 								</template>
@@ -100,9 +99,9 @@ const cities = ref([
 										</div>
 									</div>
 								</div>
-							</AccordionContainer>
+							</AppAccordion>
 
-							<AccordionContainer>
+							<AppAccordion>
 								<template #title>
 									<div class="font-bold">Datum sepsání</div>
 								</template>
@@ -120,9 +119,9 @@ const cities = ref([
 										</div>
 									</div>
 								</div>
-							</AccordionContainer>
+							</AppAccordion>
 
-							<AccordionContainer>
+							<AppAccordion>
 								<template #title>
 									<div class="font-bold">Datum vydání</div>
 								</template>
@@ -140,7 +139,7 @@ const cities = ref([
 										</div>
 									</div>
 								</div>
-							</AccordionContainer>
+							</AppAccordion>
 						</div>
 					</div>
 				</template>

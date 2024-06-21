@@ -84,11 +84,11 @@
 	input[type="datalist"],
 	textarea,
 	select {
-		font-family: theme("fontFamily.body");
-		padding: 0.4rem 0.8rem;
+		font-family: theme("fontFamily.body"), sans-serif;
+		padding: theme("padding.4") theme("padding.6");
 		background: theme("colors.brown.input");
+		font-size: theme("fontSize.regular");
 		color: theme("colors.primary");
-		font-size: 15px;
 		border: 1px solid theme("colors.brown.inputBorder");
 		font-weight: 400;
 		line-height: 1.7;
@@ -125,14 +125,9 @@
 		position: relative;
 
 		select {
-			padding-left: 2.5rem;
 			padding-right: 3.5rem;
 			appearance: none;
 			cursor: pointer;
-
-			&.select--mapPopup {
-				text-transform: capitalize;
-			}
 		}
 
 		&::after {
@@ -176,7 +171,7 @@
 		input[type="search"],
 		input[type="datalist"],
 		textarea {
-			//border-color: $color--green;
+			border-color: theme("colors.green.DEFAULT") !important;
 		}
 	}
 
@@ -217,9 +212,9 @@
 		cursor: default;
 	}
 
-	span.label {
-		color: $color--primary;
-		font-size: 15px;
+	.label {
+		color: theme("colors.primary");
+		font-size: theme("fontSize.regular");
 		font-weight: 400;
 		display: block;
 	}
@@ -253,7 +248,7 @@
 		padding: 1px 0 2px 32px;
 		min-height: 16px;
 		//cursor: pointer;
-		font-family: theme("fontFamily.body");
+		font-family: theme("fontFamily.body"), sans-serif;
 		display: inline-block;
 		margin-bottom: 0;
 		font-weight: 400;
@@ -375,7 +370,7 @@
 	}
 
 	.message {
-		font-size: 15px;
+		font-size: theme("fontSize.regular");
 		font-weight: 400;
 		padding-left: 1rem;
 		padding-top: 0.5rem;
@@ -404,7 +399,7 @@
 		resize: vertical;
 	}
 
-	&.switch {
+	&.form-field--toggle {
 		position: relative;
 		display: inline-block;
 		height: 2.7rem;

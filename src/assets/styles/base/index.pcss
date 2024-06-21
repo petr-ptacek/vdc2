@@ -1,7 +1,36 @@
 @import "tailwindcss/base.css";
 
+* {
+	scrollbar-width: thin;
+	scrollbar-color: theme("colors.brown.dark") theme("colors.brown.light");
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+	width: 1rem;
+	cursor: grab;
+}
+
+*::-webkit-scrollbar-track {
+	background: theme("colors.brown.light");
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: theme("colors.brown.dark");
+	border-radius: 1rem;
+	border: 3px solid theme("colors.brown.light");
+}
+
 html {
-	font-family: theme("fontFamily.body");
+	font-size: 62.5%;
+}
+
+body {
+	font-family: theme("fontFamily.body"), sans-serif;
+	color: theme("colors.primary");
+	font-size: theme("fontSize.regular");
+	line-height: 1.7;
+	letter-spacing: 1px;
 }
 
 a {
@@ -26,18 +55,18 @@ a {
 a[href^="tel:"],
 a[href^="fax:"],
 .website {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .website:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 p {
-  display: block;
+	display: block;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+	max-width: 100%;
+	height: auto;
 }

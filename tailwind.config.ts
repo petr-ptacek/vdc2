@@ -6,6 +6,14 @@ export default {
 		"./src/**/*.{vue,js,ts,jsx,tsx}"
 	],
 	theme: {
+		fontSize: {
+			xs: "0.6rem",
+			sm: "0.8rem",
+			base: "1rem",
+			regular: "1.5rem",
+			lg: "1.8rem",
+			xl: "2rem"
+		},
 		colors: {
 			white: "#fff",
 			black: "#fff",
@@ -40,8 +48,8 @@ export default {
 				black: "#232C34",
 				light: "#F6F6F6",
 
-				text: "#9A9DA1",
-				hover: "#949393"
+				$text: "#9A9DA1",
+				$hover: "#949393"
 			},
 			yellow: {
 				DEFAULT: "#cfa204",

@@ -25,14 +25,8 @@ export const iconComponentsMap = Object.fromEntries(
 ) as Record<AppIconNames, AsyncComponentLoader>;
 
 export const iconSizesMap = {
-	xs: { width: "0.75rem", height: "0.75rem" },
-	sm: { width: "1rem", height: "1rem" },
-	md: { width: "1.25rem", height: "1.25rem" },
-	lg: { width: "1.5rem", height: "1.5rem" },
-	xl: { width: "1.75rem", height: "1.75rem" },
-	"2xl": { width: "2rem", height: "2rem" },
-	"3xl": { width: "2.25rem", height: "2.25rem" },
-	"4xl": { width: "2.5rem", height: "2.5rem" },
-	"5xl": { width: "2.75rem", height: "2.75rem" },
-	big: { width: "3rem", height: "3rem" }
+	md: { width: "2.2rem;", height: "2.2rem;" },
+	regular: { width: "2.4rem;", height: "2.4rem;" },
+	xl: { width: "2.6rem;", height: "2.6rem;" },
+	"2xl": { width: "2.8rem;", height: "2.8rem;" }
 } as const;

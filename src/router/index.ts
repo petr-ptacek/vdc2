@@ -1,5 +1,7 @@
-import HomeView                           from "@/pages/Home.vue";
-import { createRouter, createWebHistory } from "vue-router";
+import HomeView                                                from "@/pages/Home.vue";
+import Playground                                              from "@/pages/Playground.vue";
+import Styleguide                                              from "@/pages/Styleguide.vue";
+import { createRouter, createWebHistory, type RouteRecordRaw } from "vue-router";
 
 const router = createRouter({
 	history: createWebHistory(),
@@ -8,13 +10,26 @@ const router = createRouter({
 			name: "home",
 			path: "",
 			component: HomeView
-		},
-		{
-			name: "/styleguide",
-			path: "",
-			component: HomeView
 		}
 	]
 });
+
+if ( import.meta.env.MODE === "development" ) {
+	([
+		{
+			name: "styleguide",
+			path: "/styleguide",
+			component: Styleguide
+		},
+		{
+			name: "playground",
+			path: "/playground",
+			component: Playground
+		}
+	] satisfies RouteRecordRaw[])
+		.forEach((route) => {
+			router.addRoute(route);
+		});
+}
 
 export { router };

@@ -1,11 +1,19 @@
+:root {
+	--accordion-header-padding: theme("padding.4");
+	--accordion-body-padding: theme("padding.4");
+	--accordion-header-bgc: theme("colors.brown.input");
+	--accordion-body-bgc: theme("colors.white");
+}
+
 .accordion {
+
 	@apply
 	border
-	rounded
+	rounded-xl
 	w-full
 	overflow-hidden;
 
-	border-color: theme("colors.brown.DEFAULT");
+	border-color: theme("colors.brown.inputBorder");
 	color: theme("colors.primary");
 
 	&__header {
@@ -14,17 +22,21 @@
 		flex
 		gap-1.5
 		justify-between
-		items-center
-		text-sm;
+		items-center;
 
-		background-color: theme("colors.white");
+		background-color: var(--accordion-header-bgc);
+		padding: var(--accordion-header-padding);
+	}
+
+	&__title {
+		font-size: theme("fontSize.regular");
 	}
 
 	&__button-opener {
-		@apply flex-grow-0 flex-shrink-0 p-0.5;
+		@apply flex-grow-0 flex-shrink-0 p-0.5 text-secondary;
 
 		svg {
-			@apply transition-transform w-6 h-6 block;
+			@apply transition-transform w-8 h-8 block;
 		}
 	}
 
@@ -32,10 +44,14 @@
 		display: grid;
 		grid-template-rows: 0fr;
 		transition: grid-template-rows 0.5s;
-		background-color: theme("colors.white");
+		background-color: var(--accordion-body-bgc);
 
 		& > div {
 			@apply overflow-hidden;
+
+			& > * {
+				padding: var(--accordion-body-padding);
+			}
 		}
 	}
 
