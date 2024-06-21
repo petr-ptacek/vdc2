@@ -1,0 +1,1 @@
+declare interface _SVGIcons_ {}
