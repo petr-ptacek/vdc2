@@ -31,6 +31,7 @@ export default {
 				hover: "#a57560",
 
 				input: "#FAF6EF",
+				inputBorder: "#EADABE",
 				inputText: "#A19685"
 			},
 			gray: {
@@ -47,7 +48,20 @@ export default {
 				light: "#faf6e6"
 			}
 		},
-		extend: {}
+		extend: {
+			fontFamily: {
+				body: [
+					"\"Roboto Slab\"",
+					"ui-sans-serif",
+					"system-ui",
+					"sans-serif",
+					"\"Apple Color Emoji\"",
+					"\"Segoe UI Emoji\"",
+					"\"Segoe UI Symbol\"",
+					"\"Noto Color Emoji\""
+				]
+			}
+		}
 	},
 	plugins: []
 } satisfies Config;

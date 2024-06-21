@@ -1,0 +1,461 @@
+/*
+
+  Error = is-wrong
+
+  Klasický input
+
+  <label class="form-field">
+    <input type="email" name="email" autocomplete="off" placeholder="Input"/>
+  </label>
+
+   --------------------
+
+  Search input
+
+  <label class="form-field input-search">
+    <input class="input-search__input" type="text" placeholder="Input search">
+    <div class="input-search__icon">
+        <svgo-icon-search filled />
+    </div>
+  </label>
+
+  --------------------
+
+  Select
+
+  <label for="#" class="form-field formField--select mb-0">
+    <select name="#" id="">
+      <option value="">Option 1</option>
+      <option value="">Option 2</option>
+      <option value="">Option 3</option>
+    </select>
+  </label>
+
+  ---------------------
+
+  Checkbox
+
+  <label class="form-field">
+    <input id="_1" type="checkbox">
+    <label for="_1" class="label-checkbox"></label>
+  </label>
+
+  ---------------------
+
+  Radio
+
+  <label class="form-field">
+    <input id="_1" type="radio">
+    <label for="_1" class="label-checkbox"></label>
+  </label>
+
+  ---------------------
+
+  Textarea
+
+  <label class="form-field">
+    <textarea name="text" placeholder="Input textarea"></textarea>
+  </label>
+
+  ---------------------
+
+  Toggle
+
+  <label class="form-field switch">
+    <input id="_1"type="checkbox">
+    <label for="_1" class="label-checkbox"></label>
+  </label>
+*/
+
+.form-field {
+	display: block;
+	width: 100%;
+	position: relative;
+
+	input[type="text"],
+	input[type="number"],
+	input[type="email"],
+	input[type="date"],
+	input[type="time"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"],
+	input[type="search"],
+	input[type="datalist"],
+	textarea,
+	select {
+		font-family: theme("fontFamily.body");
+		padding: 0.4rem 0.8rem;
+		background: theme("colors.brown.input");
+		color: theme("colors.primary");
+		font-size: 15px;
+		border: 1px solid theme("colors.brown.inputBorder");
+		font-weight: 400;
+		line-height: 1.7;
+		width: 100%;
+		resize: none;
+		border-radius: 0.5rem;
+		transition: all 0.1s;
+
+		&:focus {
+			outline: none;
+			background: theme("colors.white");
+		}
+
+		&:hover {
+			text-decoration: none;
+			cursor: pointer;
+		}
+
+		&:valid {
+			outline: none;
+		}
+
+		&:invalid {
+			outline: none;
+		}
+
+		&::placeholder {
+			color: theme("colors.brown.inputText");
+			opacity: 1;
+		}
+	}
+
+	&.form-field--select {
+		position: relative;
+
+		select {
+			padding-left: 2.5rem;
+			padding-right: 3.5rem;
+			appearance: none;
+			cursor: pointer;
+
+			&.select--mapPopup {
+				text-transform: capitalize;
+			}
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: calc(50% - 0.7rem);
+			right: 1.5rem;
+			width: 1rem;
+			height: 1rem;
+			transform: rotate(45deg);
+			border: 0.2rem solid theme("colors.brown.dark");
+			border-top: none;
+			border-left: none;
+			border-radius: 0.1rem;
+			pointer-events: none;
+			transition: 0.3s all ease-in-out;
+			z-index: 1;
+		}
+
+		&.form-field--select-green {
+			select {
+				border: 1px solid theme("colors.green.DEFAULT");
+				background: theme("colors.green.light");
+			}
+		}
+
+		&.form-field--select-green::after {
+			border-color: theme("colors.green.DEFAULT");
+		}
+	}
+
+	&.is-correct {
+		input[type="text"],
+		input[type="number"],
+		input[type="email"],
+		input[type="date"],
+		input[type="time"],
+		input[type="tel"],
+		input[type="url"],
+		input[type="password"],
+		input[type="search"],
+		input[type="datalist"],
+		textarea {
+			//border-color: $color--green;
+		}
+	}
+
+	&.is-wrong {
+		input[type="text"],
+		input[type="number"],
+		input[type="email"],
+		input[type="date"],
+		input[type="time"],
+		input[type="tel"],
+		input[type="url"],
+		input[type="password"],
+		input[type="search"],
+		input[type="datalist"],
+		span:before,
+		textarea,
+		select {
+			border-color: theme("colors.red.DEFAULT") !important;
+			color: theme("colors.red.DEFAULT") !important;
+		}
+	}
+
+	select[disabled],
+	input[disabled],
+	input[disabled],
+	textarea[disabled] {
+		pointer-events: none;
+		border: 1px solid theme("colors.gray.DEFAULT");
+		background: theme("colors.gray.light");
+
+		&::placeholder {
+			color: theme("colors.gray.dark");
+		}
+	}
+
+	textarea[disabled] {
+		pointer-events: auto;
+		cursor: default;
+	}
+
+	span.label {
+		color: $color--primary;
+		font-size: 15px;
+		font-weight: 400;
+		display: block;
+	}
+
+	/**
+	 * Custom checkboxes - druha varianta s obalenym <label>
+	 * --------------------------
+	 */
+
+	/* Base for label styling */
+
+	[type="checkbox"]:not(:checked),
+	[type="checkbox"]:checked,
+	[type="radio"]:not(:checked),
+	[type="radio"]:checked {
+		position: absolute;
+		left: 0;
+		top: 4px;
+		width: 20px;
+		height: 20px;
+		opacity: 0;
+		z-index: 3;
+		cursor: pointer;
+	}
+
+	[type="checkbox"]:not(:checked) + .label-checkbox,
+	[type="checkbox"]:checked + .label-checkbox,
+	[type="radio"]:not(:checked) + .label-checkbox,
+	[type="radio"]:checked + .label-checkbox {
+		position: relative;
+		padding: 1px 0 2px 32px;
+		min-height: 16px;
+		//cursor: pointer;
+		font-family: theme("fontFamily.body");
+		display: inline-block;
+		margin-bottom: 0;
+		font-weight: 400;
+		text-transform: initial;
+	}
+
+	/* checkbox aspect */
+
+	[type="checkbox"]:not(:checked) + .label-checkbox:before,
+	[type="checkbox"]:checked + .label-checkbox:before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 4px;
+		width: 20px;
+		height: 20px;
+		border-radius: 2px;
+		background-color: theme("colors.brown.input");
+		border: solid 1px theme("colors.brown.DEFAULT");
+		transition: all 0.1s;
+	}
+
+	/* checked mark aspect */
+
+	[type="checkbox"]:not(:checked) + .label-checkbox:after,
+	[type="checkbox"]:checked + .label-checkbox:after {
+		content: "";
+		position: absolute;
+		transform: rotate(45deg);
+		height: 11px;
+		width: 6px;
+		border-bottom: 2px solid theme("colors.white");
+		border-right: 2px solid theme("colors.white");
+		left: 7px;
+		top: 7px;
+		z-index: 2;
+		transition: all 0.1s;
+	}
+
+	/* radio aspect */
+
+	[type="radio"]:not(:checked) + .label-checkbox:before,
+	[type="radio"]:checked + .label-checkbox:before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 4px;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background-color: theme("colors.brown.input");
+		border: solid 1px theme("colors.brown.DEFAULT");
+		transition: all 0.1s;
+	}
+
+	/* checked radio aspect */
+
+	[type="radio"]:not(:checked) + .label-checkbox:after,
+	[type="radio"]:checked + .label-checkbox:after {
+		content: "";
+		position: absolute;
+		left: 7px;
+		top: 11px;
+		border-radius: 50%;
+		width: 6px;
+		height: 6px;
+		background-color: theme("colors.white");
+		border: solid 1px theme("colors.brown.DEFAULT");
+		transition: all 0.1s;
+	}
+
+	/* checked mark aspect changes */
+
+	[type="checkbox"]:not(:checked) + .label-checkbox:after,
+	[type="radio"]:not(:checked) + .label-checkbox:after {
+		opacity: 0;
+		transform: scale(0) rotate(45deg);
+	}
+
+	[type="checkbox"]:checked + .label-checkbox:before,
+	[type="radio"]:checked + .label-checkbox:before {
+		background-color: theme("colors.brown.dark");
+		border: solid 1px theme("colors.brown.dark");
+	}
+
+	[type="checkbox"]:checked + .label-checkbox:after,
+	[type="radio"]:checked + .label-checkbox:after {
+		opacity: 1;
+		transform: scale(1) rotate(45deg);
+	}
+
+	/* disabled checkbox */
+
+	[type="checkbox"]:disabled:not(:checked) + .label-checkbox:before,
+	[type="checkbox"]:disabled:checked + .label-checkbox:before,
+	[type="radio"]:disabled:not(:checked) + .label-checkbox:before,
+	[type="radio"]:disabled:checked + .label-checkbox:before {
+		box-shadow: none;
+		border: 1px solid theme("colors.gray.DEFAULT");
+		background: theme("colors.gray.light");
+	}
+
+	[type="radio"]:disabled:checked + .label-checkbox:after {
+		border: 1px solid theme("colors.gray.light");
+	}
+
+	[type="checkbox"]:disabled + .label-checkbox,
+	[type="radio"]:disabled + .label-checkbox {
+		color: theme("colors.gray.DEFAULT");
+	}
+
+	/* accessibility */
+
+	[type="checkbox"]:checked:focus + .label-checkbox:before,
+	[type="checkbox"]:not(:checked):focus + .label-checkbox:before,
+	[type="radio"]:checked:focus + .label-checkbox:before,
+	[type="radio"]:not(:checked):focus + .label-checkbox:before {
+		outline: none;
+	}
+
+	.message {
+		font-size: 15px;
+		font-weight: 400;
+		padding-left: 1rem;
+		padding-top: 0.5rem;
+	}
+
+	&.error .message {
+		color: theme("colors.red.DEFAULT");
+	}
+
+	&.success .message {
+		color: theme("colors.primary");
+	}
+
+	/* File input*/
+
+	input[type="file"] {
+		width: 0.1px;
+		height: 0.1px;
+		opacity: 0;
+		overflow: hidden;
+		position: absolute;
+		z-index: -1;
+	}
+
+	&.resize textarea {
+		resize: vertical;
+	}
+
+	&.switch {
+		position: relative;
+		display: inline-block;
+		height: 2.7rem;
+		width: 5.1rem;
+
+		input {
+			opacity: 0;
+			width: 0;
+			height: 0;
+		}
+
+		input:checked + .label-checkbox:before {
+			background-color: theme("colors.white");
+			left: calc(100% - 2.2rem) !important;
+		}
+
+		input:not(:checked) + .label-checkbox:before {
+			background-color: theme("colors.brown.dark");
+		}
+
+		input:checked + .label-checkbox {
+			background-color: theme("colors.brown.dark");
+			border: 1px solid theme("colors.brown.dark");
+		}
+
+		.label-checkbox {
+			position: absolute;
+			cursor: pointer;
+			width: 5.1rem;
+			height: 2.7rem;
+			background-color: theme("colors.brown.light");
+			border: 1px solid theme("colors.brown.DEFAULT");
+			border-radius: 4rem;
+			transition: all .4s;
+
+			&:before {
+				position: absolute;
+				content: "";
+				height: 1.9rem !important;
+				width: 1.9rem !important;
+				left: 0.3rem !important;
+				top: 0.3rem !important;
+				background-color: theme("colors.brown.dark");
+				border-radius: 50% !important;
+				border: none !important;
+				transition: all .4s !important;
+			}
+
+			&:after {
+				display: none;
+			}
+		}
+	}
+}

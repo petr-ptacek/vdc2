@@ -1,0 +1,76 @@
+/*
+Klasický input:
+-----------------
+<label class="form-field">
+   <input type="email" name="email" autocomplete="off" placeholder="Input"/>
+</label>
+
+Search input:
+-----------------
+<label class="form-field input-search">
+   <input class="input-search__input" type="text" placeholder="Input search">
+   <div class="input-search__icon">
+      <svgo-icon-search filled />
+   </div>
+</label>
+
+*/
+input {
+	background: theme("colors.brown.input");
+	color: theme("colors.primary");
+	font-size: 15px;
+	line-height: 1;
+	width: 100%;
+	border: 1px solid theme("colors.brown.inputBorder");
+	border-radius: 0.5rem;
+	transition: all 0.1s;
+
+	&:focus-visible, &:focus, &:active {
+		outline: none;
+		background: theme("colors.white");
+	}
+
+	&::placeholder {
+		color: theme("colors.brown.inputText");
+		opacity: 1;
+	}
+
+	&:disabled {
+		border: 1px solid theme("colors.gray.DEFAULT");
+		background: theme("colors.gray.light");
+
+		&::placeholder {
+			color: theme("colors.gray.dark");
+		}
+	}
+
+	&.is-wrong {
+		border-color: theme("colors.red.DEFAULT");
+		color: theme("colors.red.DEFAULT");
+	}
+}
+
+.input-search {
+	position: relative;
+	height: fit-content;
+}
+
+.input-search__input {
+	width: 100%;
+	background-color: theme("colors.brown.semi") !important;
+	color: theme("colors.primary") !important;
+	padding-right: 5rem !important;
+
+	&::placeholder {
+		color: theme("colors.primary") !important;
+		opacity: 1;
+	}
+}
+
+.input-search__icon {
+	position: absolute;
+	top: 50%;
+	right: 2rem;
+	transform: translateY(-50%);
+	cursor: pointer;
+}

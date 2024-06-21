@@ -1,0 +1,57 @@
+.accordion {
+	@apply
+	border
+	rounded
+	w-full
+	overflow-hidden;
+
+	border-color: theme("colors.brown.DEFAULT");
+	color: theme("colors.primary");
+
+	&__header {
+		@apply
+		p-2
+		flex
+		gap-1.5
+		justify-between
+		items-center
+		text-sm;
+
+		background-color: theme("colors.white");
+	}
+
+	&__button-opener {
+		@apply flex-grow-0 flex-shrink-0 p-0.5;
+
+		svg {
+			@apply transition-transform w-6 h-6 block;
+		}
+	}
+
+	&__body {
+		display: grid;
+		grid-template-rows: 0fr;
+		transition: grid-template-rows 0.5s;
+		background-color: theme("colors.white");
+
+		& > div {
+			@apply overflow-hidden;
+		}
+	}
+
+	&.accordion--is-header-clickable {
+		cursor: pointer;
+	}
+
+	&.is-open {
+		.accordion__body {
+			grid-template-rows: 1fr;
+		}
+
+		.accordion__button-opener {
+			svg {
+				transform: rotate(-180deg);
+			}
+		}
+	}
+}
