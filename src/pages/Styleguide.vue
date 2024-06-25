@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import AppSheet from "@/components/AppSheet.vue";
+import AppSheet       from "@/components/AppSheet.vue";
+import VueMultiselect from "@vueform/multiselect";
 </script>
 
 <template>
 	<div class="h-screen bg-white">
 		<div class="container mx-auto">
-			<div class="p-2 grid grid-cols-2 gap-4">
+			<div class="py-20 grid grid-cols-2 gap-4">
 				<AppSheet>
 					<div class="flex flex-col gap-4">
 						<div class="text-xl">Accordion</div>
@@ -144,6 +145,16 @@ import AppSheet from "@/components/AppSheet.vue";
 								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor laborum, modi perferendis quidem unde
 								voluptas.
 							</p>
+						</div>
+					</div>
+				</AppSheet>
+
+				<AppSheet>
+					<div class="flex gap-4 flex-col">
+						<div class="text-xl">Multiselect</div>
+
+						<div class="flex flex-col gap-10">
+							<VueMultiselect class="multiselect" :options="['aneta', 'mariana']" searchable placeholder="Write something ..." />
 						</div>
 					</div>
 				</AppSheet>
