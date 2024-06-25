@@ -2,7 +2,7 @@
 </script>
 
 <template>
-	<footer class="bg-secondary">
+	<footer class="bg-white shadow-2xl">
 		<div class="container mx-auto">
 			<div class="flex justify-center gap-8 p-2 items-center">
 				<svg

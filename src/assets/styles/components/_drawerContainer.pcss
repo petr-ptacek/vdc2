@@ -1,0 +1,97 @@
+.drawer-container {
+	--resizer-width: 0.5rem;
+	--content-width: 0px;
+
+	--button-icon-size: 3.5rem;
+	--button-padding: 2rem 0;
+	--button-color: #4b5563;
+	--button-active-color: white;
+	--button-bg: #d1d5db;
+	--button-active-bg: #9ca3af;
+
+	width: calc(var(--resizer-width) + var(--content-width));
+	height: 100%;
+	background-color: #26c08e;
+
+	display: flex;
+	transition: width 0.5s;
+}
+
+.drawer-container-content {
+	flex: 1;
+	overflow: hidden;
+}
+
+.drawer-resizer {
+	flex: 0 0 var(--resizer-width);
+	background-color: #d1d5db;
+}
+
+.drawer-resizer-inner {
+	width: 100%;
+	height: 100%;
+	background-color: inherit;
+	position: relative;
+}
+
+.drawer-resizer-buttons {
+	position: absolute;
+	border-bottom-left-radius: 50%;
+	border-top-left-radius: 50%;
+	overflow: hidden;
+	top: 50%;
+	transition: transform 0.5s;
+
+	transform: translateX(var(--resizer-width)) translateY(-50%) rotate(180deg);
+}
+
+/*Button*/
+
+.drawer-resizer-button {
+	padding: var(--button-padding);
+	opacity: 0.6;
+	transition: opacity 0.5s;
+	background-color: var(--button-bg);
+	color: var(--button-color);
+
+	svg {
+		width: var(--button-icon-size);
+		height: var(--button-icon-size);
+	}
+
+	&:hover {
+		opacity: 1;
+		color: var(--button-active-color);
+		background-color: var(--button-active-bg);
+	}
+}
+
+/* Open state */
+.drawer-container {
+	&--is-open {
+		--content-width: 400px;
+
+		.drawer-resizer-buttons {
+			transform: translateX(-100%) translateY(-50%);
+		}
+	}
+}
+
+/*Container side right*/
+.drawer-container[data-side="right"] {
+	.drawer-resizer {
+		order: -1;
+	}
+
+	.drawer-resizer-buttons {
+		left: -100%;
+		transform: translateX(calc(-100% + var(--resizer-width))) translateY(-50%);
+	}
+
+	&.drawer-container--is-open {
+		.drawer-resizer-buttons {
+			left: 0;
+			transform: translateX(var(--resizer-width)) translateY(-50%) rotate(180deg);
+		}
+	}
+}

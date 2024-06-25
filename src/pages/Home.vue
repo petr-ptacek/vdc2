@@ -171,6 +171,6 @@ const cities = ref([
 				</template>
 			</ResizeableContainer>
 		</main>
-		<AppFooter />
+<!--		<AppFooter />-->
 	</div>
 </template>

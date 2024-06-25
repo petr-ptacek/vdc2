@@ -328,7 +328,7 @@ function toggleExpand(expand = !isExpanded.value) {
 
 	--splittter-offset: calc(-1 * (var(--splitter-active-width) - var(--splitter-width)) / 2);
 
-	--button-size: 1.25rem;
+	--button-size: 3.4rem;
 	--button-color: white;
 	--button-active-color: white;
 	--button-bg: white;
