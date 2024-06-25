@@ -1,18 +1,56 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import type { DrawerContainerEmits, DrawerContainerProps } from "@/components/DrawerContainer/types";
+import { computed, ref, type StyleValue }                  from "vue";
+
+const props = withDefaults(
+	defineProps<DrawerContainerProps>(),
+	{
+		dir: "left",
+		opened: undefined,
+		width: "400px"
+	}
+);
+
+const emit = defineEmits<DrawerContainerEmits>();
 
 const _opened = ref(false);
+const openedModalValue = computed({
+	get() {
+		return typeof props.opened === "undefined" ?
+					 _opened.value :
+					 props.opened;
+	},
+	set(value: boolean) {
+		if ( typeof props.opened === "undefined" ) {
+			_opened.value = value;
+		} else {
+			emit("update:opened", value);
+		}
+	}
+});
 
-function toggleOpened(collapsed: boolean = !_opened.value) {
-	_opened.value = collapsed;
+const styleDef = computed<StyleValue>(() => {
+	const width = openedModalValue.value ?
+								(typeof props.width === "number" ? `${ props.width }px` : props.width) :
+								"0px";
+
+	return {
+		"--content-width": width
+	};
+});
+
+function toggleOpened(value: boolean = !openedModalValue.value) {
+	openedModalValue.value = value;
 }
 </script>
 
 <template>
 	<div
 		class="drawer-container"
+		:data-side="dir"
+		:style="styleDef"
 		:class="{
-			'drawer-container--is-open': _opened,
+			'drawer-container--is-open': openedModalValue,
 		}"
 	>
 		<div class="drawer-container-content">

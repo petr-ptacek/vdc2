@@ -3,7 +3,7 @@
 	--content-width: 0px;
 
 	--button-icon-size: 3.5rem;
-	--button-padding: 2rem 0;
+	--button-padding: 3rem 0;
 	--button-color: #4b5563;
 	--button-active-color: white;
 	--button-bg: #d1d5db;
@@ -11,15 +11,17 @@
 
 	width: calc(var(--resizer-width) + var(--content-width));
 	height: 100%;
-	background-color: #26c08e;
+	/*background-color: #26c08e;*/
 
 	display: flex;
 	transition: width 0.5s;
 }
 
 .drawer-container-content {
+	opacity: 0;
 	flex: 1;
 	overflow: hidden;
+	transition: opacity 0.2s;
 }
 
 .drawer-resizer {
@@ -67,18 +69,21 @@
 }
 
 /* Open state */
-.drawer-container {
-	&--is-open {
-		--content-width: 400px;
+.drawer-container--is-open {
+	--content-width: 400px;
 
-		.drawer-resizer-buttons {
-			transform: translateX(-100%) translateY(-50%);
-		}
+	.drawer-container-content {
+		transition: opacity 0.2s 0.5s;
+		opacity: 1;
+	}
+
+	.drawer-resizer-buttons {
+		transform: translateX(-100%) translateY(-50%);
 	}
 }
 
 /*Container side right*/
-.drawer-container[data-side="right"] {
+.drawer-container[data-side="right-to-left"] {
 	.drawer-resizer {
 		order: -1;
 	}

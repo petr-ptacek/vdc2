@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { LMapApi, LMapReadyEvent }                  from "./types";
-import { LMap, LTileLayer, LControlLayers, LLayerGroup } from "@vue-leaflet/vue-leaflet";
-import type { Map as MapClass }                          from "leaflet";
-import { ref, shallowRef }                               from "vue";
+import { LMap, LTileLayer }             from "@vue-leaflet/vue-leaflet";
+import type { Map as MapClass }         from "leaflet";
+import { ref, shallowRef }              from "vue";
+import type { LMapApi, LMapReadyEvent } from "./types";
 
 const emit = defineEmits<{
 	ready: [LMapReadyEvent];
@@ -50,21 +50,11 @@ function readyHandler(api: MapClass) {
 			@ready="readyHandler"
 		>
 			<l-tile-layer
-				url="https://www.google.cn/maps/vt?lyrs=m@189&gl=cn&x={x}&y={y}&z={z}"
+				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				layer-type="base"
-				name="Google Map"
+				name="OpenStreetMap"
 			/>
-
-			<l-tile-layer
-				url="https://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}"
-				layer-type="base"
-				attribution="Google Maps Satellite"
-				name="Google Maps Satellite"
-			/>
-
 			<slot />
-
-			<LControlLayers />
 		</LMap>
 	</div>
 </template>
