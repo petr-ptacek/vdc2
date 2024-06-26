@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppSheet       from "@/components/AppSheet.vue";
+import AppSheet from "@/components/AppSheet.vue";
 import VueMultiselect from "@vueform/multiselect";
 </script>
 
@@ -21,6 +21,19 @@ import VueMultiselect from "@vueform/multiselect";
 								quia quo vero? Atque dolores, omnis.
 							</div>
 						</AppAccordion>
+					</div>
+				</AppSheet>
+
+				<AppSheet>
+					<div class="flex flex-col gap-4">
+						<div class="text-xl">Buttons</div>
+
+						<div class="flex flex-col gap-4">
+							<button class="btn btn--primary">.btn .btn--primary</button>
+							<button class="btn btn--secondary">.btn .btn--secondary</button>
+							<button class="btn btn--tertiary">.btn .btn--tertiary</button>
+							<button class="btn" disabled>.btn disabled</button>
+						</div>
 					</div>
 				</AppSheet>
 
@@ -154,7 +167,11 @@ import VueMultiselect from "@vueform/multiselect";
 						<div class="text-xl">Multiselect</div>
 
 						<div class="flex flex-col gap-10">
-							<VueMultiselect class="multiselect" :options="['aneta', 'mariana']" searchable placeholder="Write something ..." />
+							<VueMultiselect
+								class="multiselect"
+								:options="['aneta', 'mariana']"
+								searchable
+								placeholder="Write something ..." />
 						</div>
 					</div>
 				</AppSheet>
