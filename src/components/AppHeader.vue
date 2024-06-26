@@ -9,10 +9,14 @@ function openDrawerForms() {
 	appStore.toggleDrawerForms(true);
 }
 
+function openModalHowToUseAI() {
+	appStore.toggleModalWindowHowToUseAI(true);
+}
+
 </script>
 
 <template>
-	<header class="bg-white">
+	<header class="bg-white z-10">
 		<div class="w-full px-20 pt-3 pb-3">
 			<div class="flex items-center">
 				<!-- BRAND LOGO -->
@@ -37,9 +41,15 @@ function openDrawerForms() {
 									<span>Hledat</span>
 								</button>
 
-								<button class="btn btn--tertiary rounded-full p-4">
-									<AppIcon name="question-mark-circle" size="regular" />
-								</button>
+								<div class="tooltip tooltip--bottom">
+									<button
+										class="btn btn--tertiary rounded-full p-4"
+										@click="openModalHowToUseAI()"
+									>
+										<AppIcon name="question-mark-circle" size="regular" />
+									</button>
+									<div class="tooltip-content">Jak používat AI</div>
+								</div>
 							</div>
 							<div
 								class="text-[11px] flex gap-1 items-center p-0.5 pb-0 italic text-brown-dark hover:text-brown-hover cursor-pointer"

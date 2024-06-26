@@ -6,13 +6,21 @@ export const useAppStore = defineStore("appStore", {
 			opened: false
 		};
 
+		const modalWindowHowToUseAI = {
+			opened: false
+		};
+
 		return {
-			drawerForms
+			drawerForms,
+			modalWindowHowToUseAI
 		};
 	},
 	actions: {
 		toggleDrawerForms(open?: boolean) {
 			this.drawerForms.opened = open ?? !this.drawerForms.opened;
+		},
+		toggleModalWindowHowToUseAI(open?: boolean) {
+			this.modalWindowHowToUseAI.opened = open ?? !this.modalWindowHowToUseAI.opened;
 		}
 	}
 });

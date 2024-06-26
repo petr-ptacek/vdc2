@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { DrawerContainer } from "@/components";
-import AppHeader           from "@/components/AppHeader.vue";
-import ComplexDatePicker   from "@/components/ComplexDatePicker/ComplexDatePicker.vue";
-import LeafletMapContainer from "@/components/LeafletMapContainer/LeafletMapContainer.vue";
-import { useAppStore }     from "@/store";
+import { DrawerContainer }     from "@/components";
+import AppHeader               from "@/components/AppHeader.vue";
+import ComplexDatePicker       from "@/components/ComplexDatePicker/ComplexDatePicker.vue";
+import { FullscreenContainer } from "@/components/FullscreenContainer";
+import LeafletMapContainer     from "@/components/LeafletMapContainer/LeafletMapContainer.vue";
+import { useAppStore }         from "@/store";
 
 const appStore = useAppStore();
 </script>
@@ -144,5 +145,28 @@ const appStore = useAppStore();
 				</div>
 			</DrawerContainer>
 		</main>
+
+		<teleport to="body">
+			<FullscreenContainer
+				v-model:opened="appStore.modalWindowHowToUseAI.opened"
+			>
+				<template #title>
+					<div class="flex items-center gap-4">
+						<div>
+							Jak používat AI
+						</div>
+
+						<AppIcon name="ai-network" size="xl" />
+					</div>
+				</template>
+
+				<div class="h-full py-4">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At iste quaerat quis. Cumque delectus dolorum ea
+						 enim in necessitatibus, quaerat quia! Amet architecto blanditiis deleniti dolor doloremque eius expedita,
+						 fugit ipsam magni minus provident quam quas reprehenderit totam ut, velit veniam? Autem ex explicabo magnam
+						 maxime minus ratione, vitae voluptatum!</p>
+				</div>
+			</FullscreenContainer>
+		</teleport>
 	</div>
 </template>

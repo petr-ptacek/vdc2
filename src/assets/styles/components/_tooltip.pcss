@@ -44,6 +44,19 @@
 		}
 	}
 
+	&.tooltip--bottom {
+		.tooltip-content {
+			top: 100%;
+			transform: translateX(-50%) translateY(1.2rem);
+
+			&:before {
+				top: unset;
+				bottom: 100%;
+				transform: rotate(180deg);
+			}
+		}
+	}
+
 	&.tooltip-is-active,
 	&:hover {
 		.tooltip-content {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppSheet from "@/components/AppSheet.vue";
+import AppSheet       from "@/components/AppSheet.vue";
 import VueMultiselect from "@vueform/multiselect";
 </script>
 
@@ -147,16 +147,21 @@ import VueMultiselect from "@vueform/multiselect";
 						<div class="text-xl">Tooltip</div>
 
 						<div class="flex flex-col gap-10">
-							<p class="p-2 tooltip">
+							<p class="p-2 tooltip ">
 								<span class="tooltip-content">This is tooltip ...</span>
 								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor laborum, modi perferendis quidem unde
 								voluptas.
 							</p>
 
-							<p class="p-2 tooltip tooltip-is-active">
+							<p class="p-2 tooltip tooltip-is-active tooltip--bottom">
 								<span class="tooltip-content">This is tooltip ...</span>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor laborum, modi perferendis quidem unde
-								voluptas.
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque aut autem beatae doloribus earum enim
+								exercitationem hic illo inventore ipsa itaque iure labore laborum laudantium magni maxime minima natus
+								nemo nihil non nostrum officia perferendis quaerat quas quos recusandae, saepe sit ullam vitae. Aliquam
+								aliquid aut dolorem est hic illo modi, odio odit officia possimus quaerat sed! A ab ad autem deserunt
+								distinctio, doloribus est ipsa maxime modi quas tenetur velit veniam, voluptates. Culpa ea, excepturi
+								explicabo id iste laboriosam laborum nostrum quia rerum sunt tempore vel veritatis vero voluptatibus,
+								voluptatum. Consequuntur eius pariatur perspiciatis quaerat tenetur ullam voluptates.
 							</p>
 						</div>
 					</div>
