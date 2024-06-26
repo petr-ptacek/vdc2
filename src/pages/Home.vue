@@ -1,34 +1,18 @@
 <script setup lang="ts">
-import { DrawerContainer }     from "@/components";
-import AppFooter               from "@/components/AppFooter.vue";
-import AppHeader               from "@/components/AppHeader.vue";
-import ComplexDatePicker       from "@/components/ComplexDatePicker/ComplexDatePicker.vue";
-import LeafletMapContainer     from "@/components/LeafletMapContainer/LeafletMapContainer.vue";
-import { ResizeableContainer } from "@/components/ResizeableContainer";
-import { ref }                 from "vue";
-
-const accordionsStates = ref(Array.from({ length: 6 }, () => true));
-const cities = ref([
-	{
-		title: "London",
-		url: "https://t4.ftcdn.net/jpg/02/57/75/51/360_F_257755130_JgTlcqTFxabsIKgIYLAhOFEFYmNgwyJ6.jpg"
-	},
-	{
-		title: "Paris",
-		url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIJmZVzi5O87m-FGSTtr_l3ZilQFIuS5lslg&s"
-	},
-	{
-		title: "Roma",
-		url: "https://www.barcelo.com/guia-turismo/wp-content/uploads/2020/01/coliseo-romano.jpg"
-	}
-]);
+import { DrawerContainer } from "@/components";
+import AppHeader           from "@/components/AppHeader.vue";
+import ComplexDatePicker   from "@/components/ComplexDatePicker/ComplexDatePicker.vue";
+import LeafletMapContainer from "@/components/LeafletMapContainer/LeafletMapContainer.vue";
 </script>
 
 <template>
 	<div class="h-screen w-full flex flex-col">
 		<AppHeader class="flex-shrink-0 flex-grow-0" />
 		<main class="flex-1 bg-yellow overflow-hidden relative">
-			<DrawerContainer class="absolute z-10 top-0 left-0 bottom-0 bg-white" dir="left-to-right">
+			<DrawerContainer
+				class="absolute z-10 top-0 left-0 bottom-0 bg-white"
+				dir="left-to-right"
+			>
 				<div class="h-full overflow-auto">
 					<div class="space-y-2 py-2 px-4">
 						<AppAccordion>
@@ -146,18 +130,13 @@ const cities = ref([
 
 			<LeafletMapContainer class="w-full h-full absolute z-0" />
 
-			<DrawerContainer class="absolute z-10 top-0 right-0 bottom-0 bg-white" dir="right-to-left">
-				<div class="p-2 overflow-auto">
-					<ul class="space-y-2">
-						<li v-for="city in cities" :key="city.title">
-							<div class="flex flex-col gap-2 rounded bg-brown-input p-1.5">
-								<div class="font-bold">{{ city.title }}</div>
-								<div>
-									<img :src="city.url" :alt="city.title" class="object-cover aspect-auto">
-								</div>
-							</div>
-						</li>
-					</ul>
+			<DrawerContainer
+				class="absolute z-10 top-0 right-0 bottom-0 bg-white"
+				dir="right-to-left"
+			>
+				<div class="py-2 px-4 h-full overflow-auto">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores libero magnam numquam optio, repellat
+						 repudiandae.</p>
 				</div>
 			</DrawerContainer>
 		</main>

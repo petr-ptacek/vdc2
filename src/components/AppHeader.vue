@@ -2,7 +2,7 @@
 </script>
 
 <template>
-	<header class="bg-white shadow-2xl">
+	<header class="bg-white border-b-2 border-primary">
 		<div class="w-full px-20 py-4">
 			<div class="flex items-center gap-8">
 				<div class="text-primary">

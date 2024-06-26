@@ -2,6 +2,8 @@
 	--resizer-width: 0.5rem;
 	--content-width: 0px;
 
+	--resizer-bg: #d1d5db;
+
 	--button-icon-size: 3.5rem;
 	--button-padding: 3rem 0;
 	--button-color: #4b5563;
@@ -11,7 +13,6 @@
 
 	width: calc(var(--resizer-width) + var(--content-width));
 	height: 100%;
-	/*background-color: #26c08e;*/
 
 	display: flex;
 	transition: width 0.5s;
@@ -26,7 +27,8 @@
 
 .drawer-resizer {
 	flex: 0 0 var(--resizer-width);
-	background-color: #d1d5db;
+	/*background-color: #d1d5db;*/
+	background-color: var(--resizer-bg);
 }
 
 .drawer-resizer-inner {
