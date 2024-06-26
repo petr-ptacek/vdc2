@@ -1,11 +1,14 @@
 <script setup lang="ts">
+import { AppIcon }    from "@/components/AppIcon";
+import InputSearchbar from "@/components/InputSearchBar/InputSearchbar.vue";
 </script>
 
 <template>
-	<header class="bg-white border-b-2 border-primary">
-		<div class="w-full px-20 py-4">
-			<div class="flex items-center gap-8">
-				<div class="text-primary">
+	<header class="bg-white">
+		<div class="w-full px-20 pt-3 pb-3">
+			<div class="flex items-center">
+				<!-- BRAND LOGO -->
+				<div class="text-primary mr-10">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 423 115" class="w-auto h-16 block">
 						<path
 							fill="currentColor"
@@ -13,11 +16,30 @@
 					</svg>
 				</div>
 
-				<div class="form-field w-[400px]">
-					<input
-						type="text"
-						placeholder="Hledaný výraz ..."
-					/>
+				<div class="flex gap-8 items-center">
+					<div class="flex gap-4 w-full items-center">
+						<div class="flex flex-col">
+							<div class="flex items-center gap-4">
+								<div class="w-[500px]">
+									<InputSearchbar class="w-full" />
+								</div>
+
+								<button class="btn btn--tertiary flex items-center gap-4">
+									<AppIcon name="search" size="md" />
+									<span>Hledat</span>
+								</button>
+
+								<button class="btn btn--tertiary rounded-full p-4">
+									<AppIcon name="question-mark-circle" size="regular" />
+								</button>
+							</div>
+							<div
+								class="text-[11px] p-0.5 pb-0 italic text-brown-dark hover:text-brown-hover cursor-pointer">
+								Jednotlivé parametry vyhledávání můžeš zadat do formuláře
+							</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>

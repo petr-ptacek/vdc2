@@ -5,7 +5,7 @@ import { computed, type StyleValue }       from "vue";
 
 const props = withDefaults(
 	defineProps<AppIconProps>(),
-	{ size: "regular" }
+	{ size: "md" }
 );
 
 const iconComponent = computed(() => {

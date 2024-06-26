@@ -1,0 +1,17 @@
+.form-field.form-field--searchbar {
+	input {
+		padding-left: 4.4rem;
+		padding-right: 4rem;
+	}
+
+	.button-clear {
+		opacity: 0;
+		transition: opacity 0.3s;
+	}
+
+	&[data-visible-clear-btn="true"] {
+		.button-clear {
+			opacity: 1;
+		}
+	}
+}
