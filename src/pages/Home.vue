@@ -3,7 +3,8 @@ import { DrawerContainer }     from "@/components";
 import AppHeader               from "@/components/AppHeader.vue";
 import ComplexDatePicker       from "@/components/ComplexDatePicker/ComplexDatePicker.vue";
 import { FullscreenContainer } from "@/components/FullscreenContainer";
-import LeafletMapContainer     from "@/components/LeafletMapContainer/LeafletMapContainer.vue";
+import { LeafletMap }          from "@/components/LeafletMap";
+import SearchResultsContainer  from "@/components/SearchResultsContainer/SearchResultsContainer.vue";
 import { useAppStore }         from "@/store";
 
 const appStore = useAppStore();
@@ -11,7 +12,10 @@ const appStore = useAppStore();
 
 <template>
 	<div class="h-screen w-full flex flex-col">
-		<AppHeader class="flex-shrink-0 flex-grow-0" />
+		<AppHeader class="flex-shrink-0 flex-grow-0 z-20" />
+
+		<SearchResultsContainer />
+
 		<main class="flex-1 bg-yellow overflow-hidden relative">
 			<DrawerContainer
 				class="absolute z-10 top-0 left-0 bottom-0 bg-white"
@@ -133,10 +137,10 @@ const appStore = useAppStore();
 				</div>
 			</DrawerContainer>
 
-			<LeafletMapContainer class="w-full h-full absolute z-0" />
+			<LeafletMap class="w-full h-full absolute z-0" />
 
 			<DrawerContainer
-				class="absolute z-10 top-0 right-0 bottom-0 bg-white"
+				class="absolute top-0 right-0 bottom-0 bg-white"
 				dir="right-to-left"
 			>
 				<div class="py-2 px-4 h-full overflow-auto">
@@ -156,7 +160,7 @@ const appStore = useAppStore();
 							Jak používat AI
 						</div>
 
-						<AppIcon name="ai-network" size="xl" />
+						<AppIcon name="ai-brain" size="xl" />
 					</div>
 				</template>
 

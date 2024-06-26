@@ -1,5 +1,5 @@
 .drawer-container {
-	--resizer-size: 0.4rem;
+	--resizer-size: 0.2rem;
 	--content-size: 0px;
 
 	/*--resizer-bg: #d1d5db;*/
@@ -54,6 +54,7 @@
 
 	&.is-open {
 		.drawer-container-content {
+			transition: opacity 0.2s 0.5s;
 			opacity: 1;
 		}
 	}

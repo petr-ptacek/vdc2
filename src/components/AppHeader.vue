@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { AppIcon }     from "@/components/AppIcon";
-import InputSearchbar  from "@/components/InputSearchBar/InputSearchbar.vue";
-import { useAppStore } from "@/store";
+import { AppIcon }                     from "@/components/AppIcon";
+import InputSearchbar                  from "@/components/InputSearchBar/InputSearchbar.vue";
+import { useAppStore, useSearchStore } from "@/store";
 
+const searchStore = useSearchStore();
 const appStore = useAppStore();
+
+const { toggleSearchResultsContainer } = searchStore;
 
 function openDrawerForms() {
 	appStore.toggleDrawerForms(true);
@@ -16,7 +19,7 @@ function openModalHowToUseAI() {
 </script>
 
 <template>
-	<header class="bg-white z-10">
+	<header class="bg-white z-10 border-b-[0.2rem] border-brown-inputBorder">
 		<div class="w-full px-20 pt-3 pb-3">
 			<div class="flex items-center">
 				<!-- BRAND LOGO -->
@@ -28,42 +31,43 @@ function openModalHowToUseAI() {
 					</svg>
 				</div>
 
-				<div class="flex gap-8 items-center">
-					<div class="flex gap-4 w-full items-center">
-						<div class="flex flex-col">
-							<div class="flex items-center gap-4">
-								<div class="w-[500px]">
-									<InputSearchbar class="w-full" />
-								</div>
+				<!--	MIDDLE SECTION			-->
+				<div class="flex gap-4 flex-shrink basis-3/4 items-center">
+					<div class="flex flex-1 flex-col">
+						<div class="flex items-center gap-4">
+							<form class="flex-1" @submit.prevent="toggleSearchResultsContainer()">
+								<InputSearchbar class="w-full" />
+							</form>
 
-								<div class="tooltip tooltip--bottom">
-									<button
-										class="btn btn--tertiary rounded-full p-4"
-										@click="openModalHowToUseAI()"
-									>
-										<AppIcon name="question-mark-circle" size="regular" />
-									</button>
-									<div class="tooltip-content">Jak používat AI</div>
-								</div>
-
-								<button class="btn btn--tertiary flex items-center gap-4">
-<!--									<AppIcon name="ai-search" size="regular" />-->
-									<span>Hledat</span>
+							<div class="tooltip tooltip--bottom">
+								<button
+									class="btn btn--tertiary rounded-full p-4"
+									@click="openModalHowToUseAI()"
+								>
+									<AppIcon name="question-mark-circle" size="regular" />
 								</button>
+								<div class="tooltip-content">Jak používat AI</div>
 							</div>
-							<div
-								class="text-[11px] flex gap-1 items-center p-0.5 pb-0 italic text-brown-dark hover:text-brown-hover cursor-pointer"
-								@click="openDrawerForms()"
-							>
-								<div>Jednotlivé parametry vyhledávání můžeš zadat do formuláře</div>
-								<div>
-									<AppIcon name="cursor-arrow-rays" :size="['18px']" />
-								</div>
+
+							<button class="btn btn--tertiary flex items-center gap-4">
+								<!--									<AppIcon name="ai-search" size="regular" />-->
+								<span>Hledat</span>
+							</button>
+						</div>
+						<div
+							class="text-[11px] flex w-fit items-center p-0.5 pb-0 italic text-brown-dark hover:text-brown-hover cursor-pointer"
+							@click="openDrawerForms()"
+						>
+							<div>Jednotlivé parametry vyhledávání můžeš zadat do formuláře</div>
+							<div>
+								<AppIcon name="cursor-arrow-rays" :size="['18px']" />
 							</div>
 						</div>
 					</div>
-
 				</div>
+
+				<!--END SECTION-->
+				<div class="ml-10"></div>
 			</div>
 		</div>
 	</header>

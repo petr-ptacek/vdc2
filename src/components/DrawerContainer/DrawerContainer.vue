@@ -44,8 +44,16 @@ const styleDef = computed<StyleValue>(() => {
 	return styleObj;
 });
 
+defineSlots<{
+	default: (props: { close: () => void; }) => void;
+}>();
+
 function toggleOpened(value: boolean = !openedModalValue.value) {
 	openedModalValue.value = value;
+}
+
+function close() {
+	toggleOpened(false);
 }
 </script>
 
@@ -59,7 +67,7 @@ function toggleOpened(value: boolean = !openedModalValue.value) {
 		}"
 	>
 		<div class="drawer-container-content">
-			<slot />
+			<slot :close />
 		</div>
 
 		<div class="drawer-resizer">
