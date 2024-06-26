@@ -36,11 +36,6 @@ function openModalHowToUseAI() {
 									<InputSearchbar class="w-full" />
 								</div>
 
-								<button class="btn btn--tertiary flex items-center gap-4">
-									<AppIcon name="search" size="md" />
-									<span>Hledat</span>
-								</button>
-
 								<div class="tooltip tooltip--bottom">
 									<button
 										class="btn btn--tertiary rounded-full p-4"
@@ -50,6 +45,11 @@ function openModalHowToUseAI() {
 									</button>
 									<div class="tooltip-content">Jak používat AI</div>
 								</div>
+
+								<button class="btn btn--tertiary flex items-center gap-4">
+<!--									<AppIcon name="ai-search" size="regular" />-->
+									<span>Hledat</span>
+								</button>
 							</div>
 							<div
 								class="text-[11px] flex gap-1 items-center p-0.5 pb-0 italic text-brown-dark hover:text-brown-hover cursor-pointer"

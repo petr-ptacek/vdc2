@@ -40,7 +40,7 @@ function clear() {
 		:data-visible-clear-btn="btnClearVisible"
 	>
 		<input type="text" v-model="_modelValue" placeholder="Zadej parametry pro hledání cestopisů ...">
-		<AppIcon name="ai-network" size="xl" class="absolute top-1/2 left-3 -translate-y-1/2 text-secondary" />
+		<AppIcon name="ai-search" size="xl" class="absolute top-1/2 left-3 -translate-y-1/2 text-secondary" />
 		<button
 			class="button-clear absolute top-1/2 right-2 -translate-y-1/2 text-secondary hover:text-primary"
 			@click="clear()"

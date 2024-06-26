@@ -1,49 +1,62 @@
 .drawer-container {
-	--resizer-size: 0.5rem;
+	--resizer-size: 0.4rem;
 	--content-size: 0px;
 
-	--resizer-bg: #d1d5db;
+	/*--resizer-bg: #d1d5db;*/
+	--resizer-bg: theme("colors.brown.inputBorder");
 
-	--button-border-radius: 3.5rem;
-	--button-icon-size: 3.5rem;
-	--button-height: 12rem;
-	--button-width: 4.4rem;
+	--button-border-radius: 3rem;
+	--button-icon-size: 3rem;
+	--button-height: 8rem;
+	--button-width: 4rem;
 
-	--button-color: #4b5563;
-	--button-active-color: white;
-	--button-bg: #d1d5db;
-	--button-active-bg: #9ca3af;
+	--button-opacity: 0.8;
+	--button-active-opacity: 1;
+
+	/*--button-color: #4b5563;*/
+	--button-color: theme("colors.secondary");
+	--button-bg: theme("colors.brown.DEFAULT");
+	--button-active-color: theme("colors.secondary");;
+	/*--button-active-color: white;*/
+	/*--button-active-bg: #9ca3af;*/
+	--button-active-bg: theme("colors.brown.DEFAULT");
 
 	width: calc(var(--resizer-size) + var(--content-size));
 	height: 100%;
 
 	display: flex;
 	transition: width 0.5s;
-}
 
-.drawer-container-content {
-	opacity: 0;
-	flex: 1;
-	overflow: hidden;
-	transition: opacity 0.2s;
-}
+	.drawer-container-content {
+		opacity: 0;
+		flex: 1;
+		overflow: hidden;
+		transition: opacity 0.2s;
+	}
 
-.drawer-resizer {
-	flex: 0 0 var(--resizer-size);
-	background-color: var(--resizer-bg);
-}
+	.drawer-resizer {
+		flex: 0 0 var(--resizer-size);
+		background-color: var(--resizer-bg);
+	}
 
-.drawer-resizer-inner {
-	width: 100%;
-	height: 100%;
-	background-color: inherit;
-	position: relative;
-}
+	.drawer-resizer-inner {
+		width: 100%;
+		height: 100%;
+		background-color: inherit;
+		position: relative;
+	}
 
-.drawer-resizer-buttons {
-	position: absolute;
-	overflow: hidden;
-	top: 50%;
+	.drawer-resizer-buttons {
+		position: absolute;
+		overflow: hidden;
+		top: 50%;
+	}
+
+	&.is-open {
+		.drawer-container-content {
+			opacity: 1;
+		}
+	}
 }
 
 /*Button*/
@@ -55,7 +68,7 @@
 	height: var(--button-height);
 	justify-content: center;
 	align-items: center;
-	opacity: 0.6;
+	opacity: var(--button-opacity);
 	transition: opacity 0.5s;
 	background-color: var(--button-bg);
 	color: var(--button-color);
@@ -67,7 +80,7 @@
 	}
 
 	&:hover {
-		opacity: 1;
+		opacity: var(--button-active-opacity);
 		color: var(--button-active-color);
 		background-color: var(--button-active-bg);
 	}

@@ -12,8 +12,10 @@ const opened = ref(false)
 				<div class="h-full"></div>
 			</DrawerContainer>
 
-			<DrawerContainer disable-resizer-line class="bg-tertiary z-10 absolute left-0 top-0 bottom-0" dir="left-to-right">
-				<div class="h-full"></div>
+			<DrawerContainer disable-resizer-line class="bg-tertiary text-white z-10 absolute left-0 top-0 bottom-0" dir="left-to-right">
+				<div class="h-full">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolor minima necessitatibus nisi quos repellendus.
+				</div>
 			</DrawerContainer>
 
 			<DrawerContainer disable-resizer-line class="bg-secondary z-10 absolute right-0 top-0 bottom-0" dir="right-to-left">
