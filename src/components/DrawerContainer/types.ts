@@ -3,7 +3,7 @@ export type DrawerContainerDir = "top-to-bottom" | "left-to-right" | "right-to-l
 export type DrawerContainerProps = {
 	opened?: boolean;
 	dir?: DrawerContainerDir;
-	width?: string | number;
+	size?: string | number;
 }
 
 export type DrawerContainerEmits = {

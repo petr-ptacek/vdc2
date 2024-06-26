@@ -5,9 +5,9 @@ import { computed, ref, type StyleValue }                  from "vue";
 const props = withDefaults(
 	defineProps<DrawerContainerProps>(),
 	{
-		dir: "left",
+		dir: "left-to-right",
 		opened: undefined,
-		width: "400px"
+		size: "400px"
 	}
 );
 
@@ -30,12 +30,12 @@ const openedModalValue = computed({
 });
 
 const styleDef = computed<StyleValue>(() => {
-	const width = openedModalValue.value ?
-								(typeof props.width === "number" ? `${ props.width }px` : props.width) :
+	const size = openedModalValue.value ?
+								(typeof props.size === "number" ? `${ props.size }px` : props.size) :
 								"0px";
 
 	return {
-		"--content-width": width
+		"--content-size": size
 	};
 });
 
@@ -50,7 +50,7 @@ function toggleOpened(value: boolean = !openedModalValue.value) {
 		:data-side="dir"
 		:style="styleDef"
 		:class="{
-			'drawer-container--is-open': openedModalValue,
+			'is-open': openedModalValue,
 		}"
 	>
 		<div class="drawer-container-content">
