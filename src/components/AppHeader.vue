@@ -1,6 +1,14 @@
 <script setup lang="ts">
-import { AppIcon }    from "@/components/AppIcon";
-import InputSearchbar from "@/components/InputSearchBar/InputSearchbar.vue";
+import { AppIcon }     from "@/components/AppIcon";
+import InputSearchbar  from "@/components/InputSearchBar/InputSearchbar.vue";
+import { useAppStore } from "@/store";
+
+const appStore = useAppStore();
+
+function openDrawerForms() {
+	appStore.toggleDrawerForms(true);
+}
+
 </script>
 
 <template>
@@ -34,8 +42,13 @@ import InputSearchbar from "@/components/InputSearchBar/InputSearchbar.vue";
 								</button>
 							</div>
 							<div
-								class="text-[11px] p-0.5 pb-0 italic text-brown-dark hover:text-brown-hover cursor-pointer">
-								Jednotlivé parametry vyhledávání můžeš zadat do formuláře
+								class="text-[11px] flex gap-1 items-center p-0.5 pb-0 italic text-brown-dark hover:text-brown-hover cursor-pointer"
+								@click="openDrawerForms()"
+							>
+								<div>Jednotlivé parametry vyhledávání můžeš zadat do formuláře</div>
+								<div>
+									<AppIcon name="cursor-arrow-rays" :size="['18px']" />
+								</div>
 							</div>
 						</div>
 					</div>

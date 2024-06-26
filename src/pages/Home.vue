@@ -3,6 +3,9 @@ import { DrawerContainer } from "@/components";
 import AppHeader           from "@/components/AppHeader.vue";
 import ComplexDatePicker   from "@/components/ComplexDatePicker/ComplexDatePicker.vue";
 import LeafletMapContainer from "@/components/LeafletMapContainer/LeafletMapContainer.vue";
+import { useAppStore }     from "@/store";
+
+const appStore = useAppStore();
 </script>
 
 <template>
@@ -12,6 +15,7 @@ import LeafletMapContainer from "@/components/LeafletMapContainer/LeafletMapCont
 			<DrawerContainer
 				class="absolute z-10 top-0 left-0 bottom-0 bg-white"
 				dir="left-to-right"
+				v-model:opened="appStore.drawerForms.opened"
 			>
 				<div class="h-full overflow-auto">
 					<div class="space-y-2 py-2 px-4">
