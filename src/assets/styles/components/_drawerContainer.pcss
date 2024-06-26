@@ -1,5 +1,5 @@
 .drawer-container {
-	--resizer-width: 0.5rem;
+	--resizer-size: 0.5rem;
 	--content-size: 0px;
 
 	--resizer-bg: #d1d5db;
@@ -14,7 +14,7 @@
 	--button-bg: #d1d5db;
 	--button-active-bg: #9ca3af;
 
-	width: calc(var(--resizer-width) + var(--content-size));
+	width: calc(var(--resizer-size) + var(--content-size));
 	height: 100%;
 
 	display: flex;
@@ -29,7 +29,7 @@
 }
 
 .drawer-resizer {
-	flex: 0 0 var(--resizer-width);
+	flex: 0 0 var(--resizer-size);
 	background-color: var(--resizer-bg);
 }
 
@@ -78,7 +78,7 @@
 	.drawer-resizer-buttons {
 		border-bottom-left-radius: var(--button-border-radius, 50%);
 		border-top-left-radius: var(--button-border-radius, 50%);
-		transform: translateX(var(--resizer-width)) translateY(-50%) rotate(180deg);
+		transform: translateX(var(--resizer-size)) translateY(-50%) rotate(180deg);
 	}
 
 	.drawer-resizer-button {
@@ -140,7 +140,7 @@
 		transform-origin: 0 0;
 		border-bottom-left-radius: 0;
 		border-top-left-radius: 0;
-		transform: translateX(-50%) translateY(var(--resizer-width));
+		transform: translateX(-50%) translateY(var(--resizer-size));
 	}
 
 	.drawer-resizer-button {

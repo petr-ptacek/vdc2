@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { DrawerContainer }     from "@/components";
-import { FullscreenContainer } from "@/components/FullscreenContainer";
-import { ref }                 from "vue";
+import { DrawerContainer } from "@/components";
+import { ref }             from "vue";
 
 const opened = ref(false)
 </script>
@@ -9,15 +8,15 @@ const opened = ref(false)
 <template>
 	<div class="h-screen bg-brown-semi flex justify-center items-center">
 		<div class="relative w-3/4 h-3/4 bg-yellow">
-			<DrawerContainer class="bg-primary z-20 absolute left-0 top-0" dir="top-to-bottom">
+			<DrawerContainer disable-resizer-line class="bg-primary z-20 absolute left-0 top-0" dir="top-to-bottom">
 				<div class="h-full"></div>
 			</DrawerContainer>
 
-			<DrawerContainer class="bg-secondary z-10 absolute left-0 top-0 bottom-0" dir="left-to-right">
+			<DrawerContainer disable-resizer-line class="bg-tertiary z-10 absolute left-0 top-0 bottom-0" dir="left-to-right">
 				<div class="h-full"></div>
 			</DrawerContainer>
 
-			<DrawerContainer class="bg-secondary z-10 absolute right-0 top-0 bottom-0" dir="right-to-left">
+			<DrawerContainer disable-resizer-line class="bg-secondary z-10 absolute right-0 top-0 bottom-0" dir="right-to-left">
 				<div class="h-full"></div>
 			</DrawerContainer>
 		</div>

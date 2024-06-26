@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import type { DrawerContainerEmits, DrawerContainerProps } from "@/components/DrawerContainer/types";
-import { computed, ref, type StyleValue }                  from "vue";
+import { computed, ref, type StyleValue, watch }           from "vue";
 
 const props = withDefaults(
 	defineProps<DrawerContainerProps>(),
 	{
 		dir: "left-to-right",
 		opened: undefined,
-		size: "400px"
+		size: "400px",
+		disableOpenButton: false
 	}
 );
 
@@ -30,13 +31,17 @@ const openedModalValue = computed({
 });
 
 const styleDef = computed<StyleValue>(() => {
-	const size = openedModalValue.value ?
-								(typeof props.size === "number" ? `${ props.size }px` : props.size) :
-								"0px";
+	const styleObj: StyleValue = {};
 
-	return {
-		"--content-size": size
-	};
+	styleObj["--content-size"] = openedModalValue.value ?
+															 (typeof props.size === "number" ? `${ props.size }px` : props.size) :
+															 "0px";
+
+	if ( props.disableResizerLine ) {
+		styleObj["--resizer-size"] = "0px";
+	}
+
+	return styleObj;
 });
 
 function toggleOpened(value: boolean = !openedModalValue.value) {
@@ -59,7 +64,7 @@ function toggleOpened(value: boolean = !openedModalValue.value) {
 
 		<div class="drawer-resizer">
 			<div class="drawer-resizer-inner">
-				<div class="drawer-resizer-buttons">
+				<div class="drawer-resizer-buttons" v-if="!disableOpenButton">
 					<button
 						class="drawer-resizer-button"
 						@click="toggleOpened()"

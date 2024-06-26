@@ -4,6 +4,8 @@ export type DrawerContainerProps = {
 	opened?: boolean;
 	dir?: DrawerContainerDir;
 	size?: string | number;
+	disableOpenButton?: boolean;
+	disableResizerLine?: boolean;
 }
 
 export type DrawerContainerEmits = {
