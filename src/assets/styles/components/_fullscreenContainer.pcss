@@ -1,0 +1,30 @@
+.fullscreen-container {
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	z-index: 1000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	/*opacity: 0;*/
+	/*transition: opacity 0.3s;*/
+
+	.fullscreen-container-title {
+		font-size: 3rem;
+	}
+}
+
+.fullscreen-container-content {
+	width: 100%;
+	height: 100%;
+	background-color: theme("colors.brown.DEFAULT");
+}
+
+/*OPENED*/
+.fullscreen-container.is-open {
+	width: 100%;
+	height: 100vh;
+	/*opacity: 1;*/
+}
