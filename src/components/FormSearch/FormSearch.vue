@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { AppIcon }                     from "@/components/AppIcon";
 import { useAppStore, useSearchStore } from "@/store";
+import { ref }                         from "vue";
 import InputSearchbar                  from "../InputSearchBar/InputSearchbar.vue";
 
 const searchStore = useSearchStore();
@@ -9,6 +10,8 @@ const appStore = useAppStore();
 const { toggleModalWindowHowToUseAI } = appStore;
 const { toggleSearchResultsContainer } = searchStore;
 
+const searchValue = ref("");
+
 function openModalHowToUseAI() {
 	toggleModalWindowHowToUseAI(true);
 }
@@ -16,7 +19,7 @@ function openModalHowToUseAI() {
 
 <template>
 	<form class="flex items-center gap-4" @submit.prevent="toggleSearchResultsContainer(true)">
-		<InputSearchbar class="flex-1" />
+		<InputSearchbar class="flex-1" v-model="searchValue" />
 
 		<div class="tooltip tooltip--bottom">
 			<button
