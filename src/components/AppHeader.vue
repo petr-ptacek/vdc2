@@ -9,7 +9,6 @@ const appStore = useAppStore();
 
 const { toggleSearchResultsContainer } = searchStore;
 
-
 function openDrawerForms() {
 	appStore.toggleDrawerForms(true);
 }
@@ -49,8 +48,10 @@ function openModalHowToUseAI() {
 								<div class="tooltip-content">Jak používat AI</div>
 							</div>
 
-							<button class="btn btn--tertiary flex items-center gap-4">
-								<!--									<AppIcon name="ai-search" size="regular" />-->
+							<button
+								class="btn btn--tertiary flex items-center gap-4"
+								@click="searchStore.toggleSearchResultsContainer(true)"
+							>
 								<span>Hledat</span>
 							</button>
 						</div>
