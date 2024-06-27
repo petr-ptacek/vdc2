@@ -14,7 +14,7 @@ withDefaults(
 const rootEl = useCurrentElement();
 const button = ref<HTMLElement | null>(null);
 const list = ref<HTMLElement | null>(null);
-const _opened = ref(true);
+const _opened = ref(false);
 
 onClickOutside(rootEl, () => {
 	_opened.value = false;

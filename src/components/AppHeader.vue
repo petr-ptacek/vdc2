@@ -21,7 +21,7 @@ function openModalHowToUseAI() {
 
 <template>
 	<header class="bg-white z-10 border-b-[0.2rem] border-brown-inputBorder">
-		<div class="w-full px-20 pt-3 pb-3">
+		<div class="w-full px-20 pt-4 pb-2">
 			<div class="flex items-center">
 				<!-- BRAND LOGO -->
 				<div class="text-primary mr-10">
