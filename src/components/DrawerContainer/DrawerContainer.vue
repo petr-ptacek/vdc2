@@ -7,7 +7,7 @@ const props = withDefaults(
 	{
 		dir: "left-to-right",
 		opened: undefined,
-		size: "400px",
+		size: "20vw",
 		disableOpenButton: false
 	}
 );
