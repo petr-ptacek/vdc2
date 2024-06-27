@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { AppIcon }                     from "@/components/AppIcon";
 import { DropdownMenu }                from "@/components/DropdownMenu";
+import { FormSearch }                  from "@/components/FormSearch";
 import InputSearchbar                  from "@/components/InputSearchBar/InputSearchbar.vue";
 import { useAppStore, useSearchStore } from "@/store";
 
@@ -33,27 +34,8 @@ function openModalHowToUseAI() {
 
 				<div class="flex flex-col flex-shrink w-full">
 					<div class="flex">
-						<div class="flex basis-3/4 items-center gap-4">
-							<form class="flex-1" @submit.prevent="toggleSearchResultsContainer()">
-								<InputSearchbar class="w-full" />
-							</form>
-
-							<div class="tooltip tooltip--bottom">
-								<button
-									class="btn btn--tertiary rounded-full p-4"
-									@click="openModalHowToUseAI()"
-								>
-									<AppIcon name="question-mark-circle" size="regular" />
-								</button>
-								<div class="tooltip-content">Jak používat AI</div>
-							</div>
-
-							<button
-								class="btn btn--tertiary flex items-center gap-4"
-								@click="searchStore.toggleSearchResultsContainer(true)"
-							>
-								<span>Hledat</span>
-							</button>
+						<div class="basis-3/4">
+							<FormSearch class="w-full" />
 						</div>
 
 						<div class="ml-auto">
