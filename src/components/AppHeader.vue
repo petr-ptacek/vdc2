@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { AppIcon }                     from "@/components/AppIcon";
+import { DropdownMenu }                from "@/components/DropdownMenu";
 import InputSearchbar                  from "@/components/InputSearchBar/InputSearchbar.vue";
 import { useAppStore, useSearchStore } from "@/store";
 
@@ -8,6 +9,7 @@ const appStore = useAppStore();
 
 const { toggleSearchResultsContainer } = searchStore;
 
+
 function openDrawerForms() {
 	appStore.toggleDrawerForms(true);
 }
@@ -15,7 +17,6 @@ function openDrawerForms() {
 function openModalHowToUseAI() {
 	appStore.toggleModalWindowHowToUseAI(true);
 }
-
 </script>
 
 <template>
@@ -31,10 +32,9 @@ function openModalHowToUseAI() {
 					</svg>
 				</div>
 
-				<!--	MIDDLE SECTION			-->
-				<div class="flex gap-4 flex-shrink basis-3/4 items-center">
-					<div class="flex flex-1 flex-col">
-						<div class="flex items-center gap-4">
+				<div class="flex flex-col flex-shrink w-full">
+					<div class="flex">
+						<div class="flex basis-3/4 items-center gap-4">
 							<form class="flex-1" @submit.prevent="toggleSearchResultsContainer()">
 								<InputSearchbar class="w-full" />
 							</form>
@@ -54,6 +54,19 @@ function openModalHowToUseAI() {
 								<span>Hledat</span>
 							</button>
 						</div>
+
+						<div class="ml-auto">
+							<DropdownMenu :items="[{ label: 'item-1' }, { label: 'item-2' }, { label: 'item-2'}]">
+								<template #button="{ clickHandler }">
+									<button class="btn btn--tertiary" @click="clickHandler()">
+										<AppIcon name="bars-3" size="regular" />
+									</button>
+								</template>
+							</DropdownMenu>
+						</div>
+					</div>
+
+					<div>
 						<div
 							class="text-[11px] flex w-fit items-center p-0.5 pb-0 italic text-brown-dark hover:text-brown-hover cursor-pointer"
 							@click="openDrawerForms()"
@@ -65,9 +78,6 @@ function openModalHowToUseAI() {
 						</div>
 					</div>
 				</div>
-
-				<!--END SECTION-->
-				<div class="ml-10"></div>
 			</div>
 		</div>
 	</header>
