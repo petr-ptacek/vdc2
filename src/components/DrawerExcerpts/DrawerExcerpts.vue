@@ -1,69 +1,69 @@
 <script setup lang="ts">
 import { DrawerContainer } from "@/components";
 
+import { insertsList } from "@/data/inserts";
 </script>
 
 <template>
 	<DrawerContainer
 		class="bg-white"
 		dir="right-to-left"
-		size="20vw"
+		size="500px"
 	>
-		<div class="h-full overflow-auto">
-			<ul class="">
-				<li class="border-b border-brown-inputBorder">
-					<div class="py-4 px-4 flex flex-col gap-2 bg-white hover:bg-brown-semi text-[1.2rem]">
-						<div class="flex gap-2 items-center">
-							<div class="font-semibold">Název:</div>
-							<div>Syra, Hermupolis</div>
-						</div>
+		<div class="h-full overflow-auto flex flex-col">
+			<div class="px-2 py-3 pb-6 bg-brown-semi">
+				<div class="form-field">
+					<input type="text" class="px-3 py-2" placeholder="Hledej dle názvu ...">
+				</div>
+			</div>
 
-						<div class="flex gap-2 items-center">
-							<div class="font-semibold">Stav:</div>
-							<div>Rozpracovaný</div>
-						</div>
+			<ul class="flex-1 overflow-auto">
+				<li
+					v-for="item in insertsList" :key="item.id"
+					class="border-b border-brown-inputBorder">
+					<div class="flex flex-col">
+						<div class="bg-brown-light py-2 px-4">
+							<div class="flex items-center text-[1.4rem] font-bold">
+								<div class="pr-6">
+									{{ item.name }}
+								</div>
 
-						<div class="flex gap-2 flex-col justify-center">
-							<div class="font-semibold">Témata:</div>
+								<div class="flex gap-4 ml-auto">
+									<button class="btn btn--ico-only btn--secondary">
+										<AppIcon name="map-pin" size="sm" />
+									</button>
+
+									<button class="btn btn--ico-only btn--secondary">
+										<AppIcon name="document-text" size="sm" />
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="py-4 px-4 flex flex-col gap-2 bg-white text-[1.2rem]">
+							<div class="flex gap-2 items-center">
+								<div class="font-semibold">Cestopis:</div>
+								<div>{{ item.travelogue }}</div>
+							</div>
+
+							<div class="flex gap-2 items-center">
+								<div class="font-semibold">Stav:</div>
+								<div>{{ item.state }}</div>
+							</div>
+
 							<div class="flex gap-2">
-								<div class="bg-secondary text-white rounded-xl p-2 font-bold">Vztah Místních Obyvatel K Přírodě A Životnímu Prostředí</div>
-								<div class="bg-secondary text-white rounded-xl p-2 font-bold">Trávení volného času</div>
+								<div class="font-semibold">Témata:</div>
+								<div class="flex gap-2 flex-wrap">
+									<div v-for="tag in item.tags" :key="tag" class="bg-secondary text-nowrap whitespace-nowrap text-white text-[1rem] rounded-xl px-2 py-1.5 font-bold">
+										{{ tag }}
+									</div>
+								</div>
 							</div>
-						</div>
 
-						<div class="flex gap-2 items-center">
-							<div class="font-semibold">Poznámka:</div>
-							<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus cumque excepturi hic impedit
-									 minus saepe?
-							</div>
-						</div>
-					</div>
-				</li>
-
-				<li>
-					<div class="py-4 px-4 flex flex-col gap-2 bg-white hover:bg-brown-semi text-[1.2rem]">
-						<div class="flex gap-2 items-center">
-							<div class="font-semibold">Název:</div>
-							<div>Syra, Hermupolis</div>
-						</div>
-
-						<div class="flex gap-2 items-center">
-							<div class="font-semibold">Stav:</div>
-							<div>Rozpracovaný</div>
-						</div>
-
-						<div class="flex gap-2 flex-col justify-center">
-							<div class="font-semibold">Témata:</div>
-							<div class="flex gap-2">
-								<div class="bg-secondary text-white rounded-xl p-2 font-bold">Vztah Místních Obyvatel K Přírodě A Životnímu Prostředí</div>
-								<div class="bg-secondary text-white rounded-xl p-2 font-bold">Trávení volného času</div>
-							</div>
-						</div>
-
-						<div class="flex gap-2 items-center">
-							<div class="font-semibold">Poznámka:</div>
-							<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus cumque excepturi hic impedit
-									 minus saepe?
+							<div class="flex gap-2 items-center">
+								<div class="font-semibold">Poznámka:</div>
+								<div>
+									{{ item.note }}
+								</div>
 							</div>
 						</div>
 					</div>

@@ -101,6 +101,10 @@
 	}
 
 	&.is-open {
+		/*box-shadow: 0 0 15px rgba(0, 0, 0, 0.75);*/
+		box-shadow: 5px 0 15px -3px rgba(0, 0, 0, 0.75);
+		/*clip-path: inset(0px -15px 0px 0px);*/
+
 		.drawer-resizer-button {
 			svg {
 				transform: rotate(180deg);
@@ -129,6 +133,8 @@
 	}
 
 	&.is-open {
+		box-shadow: -5px 0 15px -3px rgba(0, 0, 0, 0.75);
+
 		.drawer-resizer-button {
 			svg {
 				transform: rotate(-180deg);

@@ -24,7 +24,7 @@ function openModalHowToUseAI() {
 		<div class="tooltip tooltip--bottom">
 			<button
 				type="button"
-				class="btn btn--tertiary rounded-full p-4"
+				class="btn btn--tertiary btn--ico-only"
 				@click="openModalHowToUseAI()"
 			>
 				<AppIcon name="question-mark-circle" size="regular" />

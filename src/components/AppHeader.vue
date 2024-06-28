@@ -41,7 +41,7 @@ function openModalHowToUseAI() {
 						<div class="ml-5">
 							<DropdownMenu :items="[{ label: 'item-1' }, { label: 'item-2' }, { label: 'item-2'}]">
 								<template #button="{ clickHandler }">
-									<button class="btn btn--tertiary" @click="clickHandler()">
+									<button class="btn btn--tertiary btn--circle" @click="clickHandler()">
 										<AppIcon name="bars-3" size="regular" />
 									</button>
 								</template>
