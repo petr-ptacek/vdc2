@@ -7,7 +7,7 @@ import { DrawerContainer } from "@/components";
 	<DrawerContainer
 		class="bg-white"
 		dir="right-to-left"
-		size="30vw"
+		size="20vw"
 	>
 		<div class="h-full overflow-auto">
 			<ul class="">

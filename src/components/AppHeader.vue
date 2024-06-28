@@ -34,11 +34,11 @@ function openModalHowToUseAI() {
 
 				<div class="flex flex-col flex-shrink w-full">
 					<div class="flex">
-						<div class="basis-3/4">
+						<div class="flex-1">
 							<FormSearch class="w-full" />
 						</div>
 
-						<div class="ml-auto">
+						<div class="ml-5">
 							<DropdownMenu :items="[{ label: 'item-1' }, { label: 'item-2' }, { label: 'item-2'}]">
 								<template #button="{ clickHandler }">
 									<button class="btn btn--tertiary" @click="clickHandler()">
