@@ -4,7 +4,7 @@ import AppHeader               from "@/components/AppHeader.vue";
 import ComplexDatePicker       from "@/components/ComplexDatePicker/ComplexDatePicker.vue";
 import { DrawerExcerpts }      from "@/components/DrawerExcerpts";
 import { FullscreenContainer } from "@/components/FullscreenContainer";
-import { LeafletMap }          from "@/components/LeafletMap";
+import { LeafletMapBase }      from "@/components/LeafletMapBase";
 import SearchResultsContainer  from "@/components/SearchResultsContainer/SearchResultsContainer.vue";
 import { useAppStore }         from "@/store";
 
@@ -138,7 +138,7 @@ const appStore = useAppStore();
 				</div>
 			</DrawerContainer>
 
-			<LeafletMap class="w-full h-full absolute z-0" />
+			<LeafletMapBase class="w-full h-full absolute z-0" />
 
 			<DrawerExcerpts class="absolute top-0 right-0 bottom-0" />
 		</main>
