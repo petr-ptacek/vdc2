@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { LMap, LTileLayer }             from "@vue-leaflet/vue-leaflet";
+import { insertsList }                  from "@/data/inserts";
+import { eventBus }                     from "@/eventBus/eventBus";
+import { LMap, LMarker, LTileLayer }    from "@vue-leaflet/vue-leaflet";
 import type { Map as MapClass }         from "leaflet";
 import { ref, shallowRef }              from "vue";
 import type { LMapApi, LMapReadyEvent } from "./types";
@@ -13,6 +15,10 @@ const zoom = ref(6);
 const center = ref<[number, number]>([50.087811, 14.420460]);
 const lMapRef = ref<InstanceType<typeof LMap> | null>(null);
 const mapApi = shallowRef<MapClass | null>(null);
+
+eventBus.on("target", (latLng: any) => {
+	mapApi.value?.setView(latLng, 9, { animate: true });
+});
 
 defineExpose<{
 	lMapRef: typeof lMapRef;
@@ -54,6 +60,8 @@ function readyHandler(api: MapClass) {
 				layer-type="base"
 				name="OpenStreetMap"
 			/>
+
+			<LMarker v-for="item in insertsList" :key="item.id" :lat-lng="item.latLng as [number, number]" />
 			<slot />
 		</LMap>
 	</div>

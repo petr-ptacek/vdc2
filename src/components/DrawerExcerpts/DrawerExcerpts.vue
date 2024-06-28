@@ -1,7 +1,21 @@
 <script setup lang="ts">
-import { DrawerContainer } from "@/components";
+import { DrawerContainer }     from "@/components";
+import { FullscreenContainer } from "@/components/FullscreenContainer";
+import { insertsList }         from "@/data/inserts";
+import { eventBus }            from "@/eventBus/eventBus";
+import { ref }                 from "vue";
 
-import { insertsList } from "@/data/inserts";
+const selectedInsert = ref<any>(null);
+const _opened = ref(false);
+
+function targetHandler(item: any) {
+	eventBus.emit("target", item.latLng);
+}
+
+function detailHandler(item: any) {
+	selectedInsert.value = item;
+	_opened.value = true;
+}
 </script>
 
 <template>
@@ -29,11 +43,11 @@ import { insertsList } from "@/data/inserts";
 								</div>
 
 								<div class="flex gap-4 ml-auto">
-									<button class="btn btn--ico-only btn--secondary">
+									<button class="btn btn--ico-only btn--secondary" @click="targetHandler(item)">
 										<AppIcon name="map-pin" size="sm" />
 									</button>
 
-									<button class="btn btn--ico-only btn--secondary">
+									<button class="btn btn--ico-only btn--secondary" @click="detailHandler(item)">
 										<AppIcon name="document-text" size="sm" />
 									</button>
 								</div>
@@ -53,7 +67,10 @@ import { insertsList } from "@/data/inserts";
 							<div class="flex gap-2">
 								<div class="font-semibold">Témata:</div>
 								<div class="flex gap-2 flex-wrap">
-									<div v-for="tag in item.tags" :key="tag" class="bg-secondary text-nowrap whitespace-nowrap text-white text-[1rem] rounded-xl px-2 py-1.5 font-bold">
+									<div
+										v-for="tag in item.tags"
+										:key="tag"
+										class="bg-secondary text-nowrap whitespace-nowrap text-white text-[1rem] rounded-xl px-2 py-1.5 font-bold">
 										{{ tag }}
 									</div>
 								</div>
@@ -71,5 +88,17 @@ import { insertsList } from "@/data/inserts";
 			</ul>
 
 		</div>
+
+		<teleport to="body">
+			<FullscreenContainer v-if="_opened" opened @update:opened="_opened = false">
+				<template #title>
+					{{ selectedInsert.name }}
+				</template>
+
+				<div class="flex justify-center items-center h-full">
+					<p>Detail úryvku ...</p>
+				</div>
+			</FullscreenContainer>
+		</teleport>
 	</DrawerContainer>
 </template>

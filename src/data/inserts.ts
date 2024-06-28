@@ -34,5 +34,29 @@ export const insertsList = [
 		],
 		note: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus cumque excepturi hic impedit minus saepe?",
 		latLng: [41.902782, 12.496366]
+	},
+	{
+		id: "4",
+		name: "Madrid",
+		travelogue: "Causerie z cest. Řada I., II. Španělsko",
+		state: "Rozpracovaný",
+		tags: [
+			"Vztah Místních Obyvatel K Přírodě A Životnímu Prostředí",
+			"Trávení volného času"
+		],
+		note: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus cumque excepturi hic impedit minus saepe?",
+		latLng: [40.416775, -3.703790]
+	},
+	{
+		id: "5",
+		name: "Jeruzalém (obdělávání vinic)",
+		travelogue: "Cesta a Pouť do Egypta a Svaté země",
+		state: "Rozpracovaný",
+		tags: [
+			"Vztah Místních Obyvatel K Přírodě A Životnímu Prostředí",
+			"Trávení volného času"
+		],
+		note: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus cumque excepturi hic impedit minus saepe?",
+		latLng: [31.771959, 35.217018]
 	}
 ];
