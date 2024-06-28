@@ -11,13 +11,13 @@ const emit = defineEmits<{
 	"update:lMapApi": [LMapApi];
 }>();
 
-const zoom = ref(6);
-const center = ref<[number, number]>([50.087811, 14.420460]);
+const zoom = ref(8);
+const center = ref<[number, number]>([49.593777, 17.250879]);
 const lMapRef = ref<InstanceType<typeof LMap> | null>(null);
 const mapApi = shallowRef<MapClass | null>(null);
 
 eventBus.on("target", (latLng: any) => {
-	mapApi.value?.setView(latLng, 9, { animate: true });
+	mapApi.value?.setView(latLng, mapApi.value?.getZoom(), { animate: true });
 });
 
 defineExpose<{

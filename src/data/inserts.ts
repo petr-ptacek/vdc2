@@ -9,7 +9,7 @@ export const insertsList = [
 			"Trávení volného času"
 		],
 		note: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus cumque excepturi hic impedit minus saepe?",
-		latLng: [50.073658, 14.418540]
+		latLng: [49.593777, 17.250879]
 	},
 	{
 		id: "2",
