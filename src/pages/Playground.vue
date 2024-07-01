@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref }            from "vue";
+import { UseEmitterDemo } from "@/views/UseEmitterDemo";
 
-const opened = ref(false);
 </script>
 
 <template>
 	<div class="h-screen bg-brown-semi flex justify-center items-center">
+		<UseEmitterDemo />
+		<!--		<ul class="space-y-2">-->
+		<!--			<li v-for="i in 10" :key="i"></li>-->
+		<!--		</ul>-->
+
 
 		<!--		<div class="relative w-3/4 h-3/4 bg-yellow">-->
 		<!--			<DrawerContainer disable-resizer-line class="bg-primary z-20 absolute left-0 top-0" dir="top-to-bottom">-->
