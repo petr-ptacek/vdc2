@@ -1,12 +1,33 @@
 <script setup lang="ts">
-import { ref }            from "vue";
-import { UseEmitterDemo } from "@/views/UseEmitterDemo";
+import { MenuHorizontal, type MenuHorizontalItem } from "@/components/MenuHorizontal";
+import { ref }                                     from "vue";
+
+const selectedItem = ref<MenuHorizontalItem | null>(null);
+
+const items = ref<MenuHorizontalItem[]>([
+	{
+		id: "Item1",
+		label: "Item 1"
+	},
+	{
+		id: "Item2",
+		label: "Item 2"
+	},
+	{
+		id: "Item3",
+		label: "Item 3"
+	}
+]);
 
 </script>
 
 <template>
 	<div class="h-screen bg-brown-semi flex justify-center items-center">
-		<UseEmitterDemo />
+		<div class="w-3/4">
+			<MenuHorizontal :items v-model="selectedItem"/>
+		</div>
+
+
 		<!--		<ul class="space-y-2">-->
 		<!--			<li v-for="i in 10" :key="i"></li>-->
 		<!--		</ul>-->
