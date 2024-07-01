@@ -1,29 +1,25 @@
 <script setup lang="ts">
-import { insertsList }                  from "@/data/inserts";
-import { eventBus }                     from "@/eventBus/eventBus";
-import { LMap, LMarker, LTileLayer }    from "@vue-leaflet/vue-leaflet";
-import type { Map as MapClass }         from "leaflet";
-import { ref, shallowRef }              from "vue";
-import type { LMapApi, LMapReadyEvent } from "./types";
+import { insertsList }                           from "@/data/inserts";
+import { eventBus }                              from "@/eventBus/eventBus";
+import { LMap, LMarker, LTileLayer }             from "@vue-leaflet/vue-leaflet";
+import type { Map as MapClass }                  from "leaflet";
+import { ref, shallowRef }                       from "vue";
+import type { LeafletMapEmits, LeafletMapProps } from "./types";
 
-const emit = defineEmits<{
-	ready: [LMapReadyEvent];
-	"update:lMapApi": [LMapApi];
-}>();
+withDefaults(
+	defineProps<LeafletMapProps>(),
+	{
+		center: () => [35.917973, 14.409943],
+		zoom: 8
+	}
+);
+const emit = defineEmits<LeafletMapEmits>();
 
-const zoom = ref(8);
-const center = ref<[number, number]>([49.593777, 17.250879]);
 const lMapRef = ref<InstanceType<typeof LMap> | null>(null);
 const mapApi = shallowRef<MapClass | null>(null);
 
 eventBus.on("target", (latLng: any) => {
 	mapApi.value?.setView(latLng, mapApi.value?.getZoom(), { animate: true });
-});
-
-defineExpose<{
-	lMapRef: typeof lMapRef;
-}>({
-	lMapRef: lMapRef
 });
 
 function readyHandler(api: MapClass) {
@@ -32,17 +28,16 @@ function readyHandler(api: MapClass) {
 		``
 	);
 	mapApi.value = api;
-	emit("ready", { api: mapApi.value });
 	emit("update:lMapApi", mapApi.value);
+	emit("ready", { api: mapApi.value });
 }
 </script>
-
 
 <template>
 	<div class="w-full h-full">
 		<LMap
 			ref="lMapRef"
-			v-model:zoom="zoom"
+			:zoom
 			:max-zoom="15"
 			:min-zoom="2"
 			:use-global-leaflet="false"
