@@ -20,7 +20,6 @@ export function useEmitter<Events extends EventsMap>() {
 		};
 
 		onUnmounted(() => {
-			console.log(`unmounted`);
 			unsubscribe();
 		});
 
