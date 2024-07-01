@@ -4,10 +4,13 @@ import type { NavHorizontalEmits, NavHorizontalItem, NavHorizontalProps } from "
 defineProps<NavHorizontalProps<TItem>>();
 const emit = defineEmits<NavHorizontalEmits<TItem>>();
 
-
 function itemClickHandler(item: NavHorizontalItem<TItem>) {
 	emit("update:modelValue", item);
 }
+
+defineSlots<{
+	default: (props: { item: NavHorizontalItem<TItem> }) => void;
+}>();
 </script>
 
 <template>
