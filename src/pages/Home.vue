@@ -138,7 +138,11 @@ const appStore = useAppStore();
 				</div>
 			</DrawerContainer>
 
-			<LeafletMap class="w-full h-full absolute z-0" />
+			<LeafletMap
+				class="w-full h-full absolute z-0"
+				:center="[35.917973, 14.409943]"
+				:zoom="5"
+			/>
 
 			<DrawerExcerpts class="absolute top-0 right-0 bottom-0" />
 		</main>

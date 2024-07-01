@@ -6,13 +6,7 @@ import type { Map as MapClass }                  from "leaflet";
 import { ref, shallowRef }                       from "vue";
 import type { LeafletMapEmits, LeafletMapProps } from "./types";
 
-withDefaults(
-	defineProps<LeafletMapProps>(),
-	{
-		center: () => [35.917973, 14.409943],
-		zoom: 8
-	}
-);
+defineProps<LeafletMapProps>();
 const emit = defineEmits<LeafletMapEmits>();
 
 const lMapRef = ref<InstanceType<typeof LMap> | null>(null);
