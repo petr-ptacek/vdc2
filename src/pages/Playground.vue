@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { MenuHorizontal, type MenuHorizontalItem } from "@/components/MenuHorizontal";
-import { ref }                                     from "vue";
+import { NavHorizontal, type NavHorizontalItem } from "@/components/NavHorizontal";
+import { ref }                                   from "vue";
 
-const selectedItem = ref<MenuHorizontalItem | null>(null);
+const selectedItem = ref<NavHorizontalItem | null>(null);
 
-const items = ref<MenuHorizontalItem[]>([
+const items = ref<NavHorizontalItem[]>([
 	{
 		id: "Item1",
 		label: "Item 1"
@@ -24,7 +24,7 @@ const items = ref<MenuHorizontalItem[]>([
 <template>
 	<div class="h-screen bg-brown-semi flex justify-center items-center">
 		<div class="w-3/4">
-			<MenuHorizontal :items v-model="selectedItem"/>
+			<NavHorizontal :items v-model="selectedItem"/>
 		</div>
 
 

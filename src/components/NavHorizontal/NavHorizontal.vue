@@ -1,22 +1,22 @@
 <script setup lang="ts" generic="TItem">
-import type { MenuHorizontalEmits, MenuHorizontalItem, MenuHorizontalProps } from "@/components/MenuHorizontal/types";
+import type { NavHorizontalEmits, NavHorizontalItem, NavHorizontalProps } from "@/components/NavHorizontal/types";
 
-defineProps<MenuHorizontalProps<TItem>>();
-const emit = defineEmits<MenuHorizontalEmits<TItem>>();
+defineProps<NavHorizontalProps<TItem>>();
+const emit = defineEmits<NavHorizontalEmits<TItem>>();
 
 
-function itemClickHandler(item: MenuHorizontalItem<TItem>) {
+function itemClickHandler(item: NavHorizontalItem<TItem>) {
 	emit("update:modelValue", item);
 }
 </script>
 
 <template>
-	<nav class="menu-horizontal">
-		<ul class="menu-items">
+	<nav class="nav-horizontal">
+		<ul class="items">
 			<li
 				v-for="item in items"
 				:key="item.id"
-				class="menu-item"
+				class="item"
 				:class="{
 					'is-active': item.id === modelValue?.id
 				}"
@@ -26,7 +26,7 @@ function itemClickHandler(item: MenuHorizontalItem<TItem>) {
 					{{ item.label }}
 				</slot>
 
-				<div class="menu-item-splitter">
+				<div class="item-splitter">
 					<AppIcon name="chevron-right" :size="['2.6rem']" />
 				</div>
 			</li>
