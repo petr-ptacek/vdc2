@@ -2,7 +2,7 @@ import type { CSSClassValue } from "@/types";
 
 export type FullscreenContainerProps = {
 	opened?: boolean;
-	classContent?: CSSClassValue;
+	contentClass?: CSSClassValue;
 }
 
 export type FullscreenContainerEmits = {

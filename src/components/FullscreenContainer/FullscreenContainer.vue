@@ -57,7 +57,10 @@ defineSlots<{
 				</div>
 			</header>
 
-			<main class="fullscreen-container-body" :class="classContent">
+			<main
+				class="fullscreen-container-body"
+				:class="contentClass"
+			>
 				<!-- here preloader -->
 				<slot :opened="_openedModelValue" />
 			</main>
