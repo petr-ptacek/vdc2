@@ -8,10 +8,6 @@ type _State = {
 	fetching: boolean;
 }
 
-export type OpenDetailParams = {
-	excerptId: string;
-}
-
 export const useExcerptDetailStore = defineStore("excerptDetailStore",
 	{
 		state(): _State {
@@ -37,6 +33,7 @@ export const useExcerptDetailStore = defineStore("excerptDetailStore",
 				this.excerpt = null;
 			},
 			async fetchData(excerptId: string): Promise<Excerpt> {
+				// const appStore = useAppStore();
 				this.fetching = true;
 
 				this.excerpt = {

@@ -2,6 +2,8 @@ import { defineStore } from "pinia";
 
 export const useAppStore = defineStore("appStore", {
 	state: () => {
+		let _loaderCounter = 0;
+
 		const drawerForms = {
 			opened: false
 		};
@@ -12,10 +14,23 @@ export const useAppStore = defineStore("appStore", {
 
 		return {
 			drawerForms,
-			windowHowToUseAI
+			windowHowToUseAI,
+			_loaderCounter
 		};
 	},
+	getters: {
+		loaderVisibility(): boolean {
+			return this._loaderCounter > 0;
+		}
+	},
 	actions: {
+		showLoader() {
+			this._loaderCounter++;
+		},
+		hideLoader() {
+			this._loaderCounter -= this._loaderCounter - 1 < 0 ? 0 : 1;
+		},
+
 		toggleDrawerForms(open?: boolean) {
 			this.drawerForms.opened = open ?? !this.drawerForms.opened;
 		},

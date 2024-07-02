@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { AppLoader }                             from "@/components/AppLoader";
 import { NavHorizontal, type NavHorizontalItem } from "@/components/NavHorizontal";
 import { ref }                                   from "vue";
 
@@ -23,8 +24,10 @@ const items = ref<NavHorizontalItem[]>([
 
 <template>
 	<div class="h-screen bg-brown-semi flex justify-center items-center">
-		<div class="w-3/4">
-			<NavHorizontal :items v-model="selectedItem"/>
+
+		<div class="w-3/4 relative h-[300px]">
+			<NavHorizontal :items v-model="selectedItem" />
+
 		</div>
 
 

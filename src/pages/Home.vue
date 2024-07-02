@@ -12,7 +12,7 @@ const appStore = useAppStore();
 </script>
 
 <template>
-	<div class="h-screen w-full flex flex-col">
+	<div class="w-full h-full flex flex-col">
 		<AppHeader class="flex-shrink-0 flex-grow-0 z-20" />
 
 		<SearchResultsContainer />
