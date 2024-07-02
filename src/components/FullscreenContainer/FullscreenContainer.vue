@@ -30,6 +30,11 @@ function close() {
 	_openedModelValue.value = false;
 	emit("close");
 }
+
+defineSlots<{
+	title: () => string;
+	default: (props: { opened: boolean }) => void;
+}>();
 </script>
 
 <template>
@@ -39,8 +44,8 @@ function close() {
 			'is-open': _openedModelValue
 		}"
 	>
-		<div class="fullscreen-container-content flex flex-col">
-			<header class="flex-shrink-0 px-12 py-4 bg-white">
+		<div class="fullscreen-container-content">
+			<header class="fullscreen-container-header">
 				<div class="flex items-center justify-between">
 					<div class="fullscreen-container-title">
 						<slot name="title" />
@@ -52,10 +57,9 @@ function close() {
 				</div>
 			</header>
 
-			<main class="flex-1 px-12">
-				<template v-if="_openedModelValue">
-					<slot />
-				</template>
+			<main class="fullscreen-container-body" :class="classContent">
+				<!-- here preloader -->
+				<slot :opened="_openedModelValue" />
 			</main>
 		</div>
 	</div>

@@ -7,13 +7,13 @@ import InputSearchbar                  from "../InputSearchBar/InputSearchbar.vu
 const searchStore = useSearchStore();
 const appStore = useAppStore();
 
-const { toggleModalWindowHowToUseAI } = appStore;
+const { toggleWindowHowToUseAI } = appStore;
 const { toggleSearchResultsContainer } = searchStore;
 
 const searchValue = ref("");
 
 function openModalHowToUseAI() {
-	toggleModalWindowHowToUseAI(true);
+	toggleWindowHowToUseAI(true);
 }
 </script>
 

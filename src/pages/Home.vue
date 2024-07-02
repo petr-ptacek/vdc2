@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { DrawerContainer }     from "@/components";
-import AppHeader               from "@/components/AppHeader.vue";
-import ComplexDatePicker       from "@/components/ComplexDatePicker/ComplexDatePicker.vue";
-import { DrawerExcerpts }      from "@/components/DrawerExcerpts";
-import { FullscreenContainer } from "@/components/FullscreenContainer";
-import { LeafletMap }          from "@/components/LeafletMap";
-import SearchResultsContainer  from "@/components/SearchResultsContainer/SearchResultsContainer.vue";
-import { useAppStore }         from "@/store";
+import { DrawerContainer }    from "@/components";
+import AppHeader              from "@/components/AppHeader.vue";
+import ComplexDatePicker      from "@/components/ComplexDatePicker/ComplexDatePicker.vue";
+import { DrawerExcerpts }     from "@/components/DrawerExcerpts";
+import { FullscreenWindows }  from "@/components/FullscreenWindows";
+import { LeafletMap }         from "@/components/LeafletMap";
+import SearchResultsContainer from "@/components/SearchResultsContainer/SearchResultsContainer.vue";
+import { useAppStore }        from "@/store";
 
 const appStore = useAppStore();
 </script>
@@ -147,27 +147,6 @@ const appStore = useAppStore();
 			<DrawerExcerpts class="absolute top-0 right-0 bottom-0" />
 		</main>
 
-		<teleport to="body">
-			<FullscreenContainer
-				v-model:opened="appStore.modalWindowHowToUseAI.opened"
-			>
-				<template #title>
-					<div class="flex items-center gap-4">
-						<div>
-							Jak používat AI
-						</div>
-
-						<AppIcon name="ai-brain" size="xl" />
-					</div>
-				</template>
-
-				<div class="h-full py-4">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At iste quaerat quis. Cumque delectus dolorum ea
-						 enim in necessitatibus, quaerat quia! Amet architecto blanditiis deleniti dolor doloremque eius expedita,
-						 fugit ipsam magni minus provident quam quas reprehenderit totam ut, velit veniam? Autem ex explicabo magnam
-						 maxime minus ratione, vitae voluptatum!</p>
-				</div>
-			</FullscreenContainer>
-		</teleport>
+		<FullscreenWindows />
 	</div>
 </template>

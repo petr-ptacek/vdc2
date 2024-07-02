@@ -15,7 +15,7 @@ function openDrawerForms() {
 }
 
 function openModalHowToUseAI() {
-	appStore.toggleModalWindowHowToUseAI(true);
+	appStore.toggleWindowHowToUseAI(true);
 }
 </script>
 

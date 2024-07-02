@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { DrawerContainer }     from "@/components";
-import { FullscreenContainer } from "@/components/FullscreenContainer";
-import { insertsList }         from "@/data/inserts";
-import { eventBus }            from "@/eventBus/eventBus";
-import { ref }                 from "vue";
+import { DrawerContainer }       from "@/components";
+import { FullscreenContainer }   from "@/components/FullscreenContainer";
+import { insertsList }           from "@/data/inserts";
+import { eventBus }              from "@/eventBus/eventBus";
+import { useExcerptDetailStore } from "@/store";
+import { ref }                   from "vue";
 
+
+const excerptDetailStore = useExcerptDetailStore();
 const selectedInsert = ref<any>(null);
 const _opened = ref(false);
 
@@ -12,10 +15,7 @@ function targetHandler(item: any) {
 	eventBus.emit("target", item.latLng);
 }
 
-function detailHandler(item: any) {
-	selectedInsert.value = item;
-	_opened.value = true;
-}
+
 </script>
 
 <template>
@@ -47,7 +47,10 @@ function detailHandler(item: any) {
 										<AppIcon name="map-pin" size="sm" />
 									</button>
 
-									<button class="btn btn--ico-only btn--secondary" @click="detailHandler(item)">
+									<button
+										class="btn btn--ico-only btn--secondary"
+										@click="excerptDetailStore.openDetail(item.id)"
+									>
 										<AppIcon name="document-text" size="sm" />
 									</button>
 								</div>
@@ -86,19 +89,6 @@ function detailHandler(item: any) {
 					</div>
 				</li>
 			</ul>
-
 		</div>
-
-		<teleport to="body">
-			<FullscreenContainer v-if="_opened" opened @update:opened="_opened = false">
-				<template #title>
-					{{ selectedInsert.name }}
-				</template>
-
-				<div class="flex justify-center items-center h-full">
-					<p>Detail úryvku ...</p>
-				</div>
-			</FullscreenContainer>
-		</teleport>
 	</DrawerContainer>
 </template>

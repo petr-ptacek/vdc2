@@ -1,18 +1,35 @@
 .nav-horizontal {
+	--border-width: 0.2rem;
+
 	background-color: theme("colors.white");
+
 
 	.items {
 		display: flex;
 		flex-wrap: nowrap;
+		border-bottom: var(--border-width) solid theme("colors.brown.semi");
 	}
 
 	.item {
-		padding: 2rem 3.5rem 2rem 3.5rem;
+		padding: 1.6rem 4.5rem;
 		font-size: 1.8rem;
 		position: relative;
-		border-bottom: 0.2rem solid theme("colors.brown.semi");
-		transition: color 0.4s, border-bottom-color 0.4s;
+		transition: color 0.4s;
 		cursor: pointer;
+
+		&::after {
+			content: "";
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: var(--border-width);
+			display: block;
+			position: absolute;
+			background-color: theme("colors.secondary");
+			transform: translateY(100%);
+			transition: opacity 0.4s;
+			opacity: 0;
+		}
 
 		&:last-of-type {
 			padding-right: 2rem;
@@ -25,7 +42,10 @@
 		&.is-active,
 		&:hover {
 			color: theme("colors.secondary");
-			border-bottom-color: theme("colors.secondary");
+
+			&::after {
+				opacity: 1;
+			}
 		}
 	}
 

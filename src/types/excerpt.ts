@@ -1,4 +1,4 @@
 export type Excerpt = {
 	id: string;
-	label: string;
+	title: string;
 };
