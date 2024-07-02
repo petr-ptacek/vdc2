@@ -1,15 +1,10 @@
 <script setup lang="ts">
 import { DrawerContainer }       from "@/components";
-import { FullscreenContainer }   from "@/components/FullscreenContainer";
-import { insertsList }           from "@/data/inserts";
 import { eventBus }              from "@/eventBus/eventBus";
 import { useExcerptDetailStore } from "@/store";
-import { ref }                   from "vue";
-
+import { excerptsList }          from "@/data";
 
 const excerptDetailStore = useExcerptDetailStore();
-const selectedInsert = ref<any>(null);
-const _opened = ref(false);
 
 function targetHandler(item: any) {
 	eventBus.emit("target", item.latLng);
@@ -33,7 +28,7 @@ function targetHandler(item: any) {
 
 			<ul class="flex-1 overflow-auto">
 				<li
-					v-for="item in insertsList" :key="item.id"
+					v-for="item in excerptsList" :key="item.id"
 					class="border-b border-brown-inputBorder">
 					<div class="flex flex-col">
 						<div class="bg-brown-light py-2 px-4">
@@ -63,8 +58,8 @@ function targetHandler(item: any) {
 							</div>
 
 							<div class="flex gap-2 items-center">
-								<div class="font-semibold">Stav:</div>
-								<div>{{ item.state }}</div>
+								<div class="font-semibold">Způsob dopravy:</div>
+								<div>{{ item.transportations.join(", ") }}</div>
 							</div>
 
 							<div class="flex gap-2">
@@ -79,12 +74,12 @@ function targetHandler(item: any) {
 								</div>
 							</div>
 
-							<div class="flex gap-2 items-center">
-								<div class="font-semibold">Poznámka:</div>
-								<div>
-									{{ item.note }}
-								</div>
-							</div>
+<!--							<div class="flex gap-2 items-center">-->
+<!--								<div class="font-semibold">Poznámka:</div>-->
+<!--								<div>-->
+<!--									{{ item.note }}-->
+<!--								</div>-->
+<!--							</div>-->
 						</div>
 					</div>
 				</li>

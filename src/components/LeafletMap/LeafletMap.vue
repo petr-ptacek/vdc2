@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { insertsList }                           from "@/data/inserts";
+import { excerptsList }                          from "@/data";
 import { eventBus }                              from "@/eventBus/eventBus";
 import { LMap, LMarker, LTileLayer }             from "@vue-leaflet/vue-leaflet";
 import type { Map as MapClass }                  from "leaflet";
@@ -50,7 +50,7 @@ function readyHandler(api: MapClass) {
 				name="OpenStreetMap"
 			/>
 
-			<LMarker v-for="item in insertsList" :key="item.id" :lat-lng="item.latLng as [number, number]" />
+			<LMarker v-for="item in excerptsList" :key="item.id" :lat-lng="item.latLng" />
 			<slot />
 		</LMap>
 	</div>

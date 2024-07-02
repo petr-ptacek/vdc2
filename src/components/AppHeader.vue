@@ -1,22 +1,15 @@
 <script setup lang="ts">
-import { AppIcon }                     from "@/components/AppIcon";
-import { DropdownMenu }                from "@/components/DropdownMenu";
-import { FormSearch }                  from "@/components/FormSearch";
-import InputSearchbar                  from "@/components/InputSearchBar/InputSearchbar.vue";
-import { useAppStore, useSearchStore } from "@/store";
+import { AppIcon }      from "@/components/AppIcon";
+import { DropdownMenu } from "@/components/DropdownMenu";
+import { FormSearch }   from "@/components/FormSearch";
+import { useAppStore }  from "@/store";
 
-const searchStore = useSearchStore();
 const appStore = useAppStore();
-
-const { toggleSearchResultsContainer } = searchStore;
 
 function openDrawerForms() {
 	appStore.toggleDrawerForms(true);
 }
 
-function openModalHowToUseAI() {
-	appStore.toggleWindowHowToUseAI(true);
-}
 </script>
 
 <template>
