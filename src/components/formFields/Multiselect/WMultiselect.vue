@@ -18,8 +18,13 @@ const _modelValue = defineModel<TModelValue>();
 		class="multiselect"
 		:options
 		searchable
+		:placeholder="props.placeholder"
 		:object="props.object"
 		can-clear
+		:label="props.label"
+		input-type="text"
+		:track-by="props.trackBy"
+		value-prop="id"
 	>
 
 	</VueMultiselect>

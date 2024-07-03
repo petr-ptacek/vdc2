@@ -3,6 +3,7 @@ import { WDrawerContainer, WIcon } from "@/components";
 import { EXCERPTS_LIST }           from "@/data";
 import { eventBus }                from "@/eventBus/eventBus";
 import { useExcerptDetailStore }   from "@/store";
+import TheToolbar                  from "@/views/home/components/DrawerExcerpts/components/TheToolbar.vue";
 
 const excerptDetailStore = useExcerptDetailStore();
 
@@ -19,9 +20,7 @@ function targetHandler(item: any) {
 	>
 		<div class="h-full overflow-auto flex flex-col">
 			<div class="px-2 py-3 pb-6 bg-brown-semi">
-				<div class="form-field">
-					<input type="text" class="px-3 py-2" placeholder="Hledej dle názvu ...">
-				</div>
+				<TheToolbar />
 			</div>
 
 			<ul class="flex-1 overflow-auto">

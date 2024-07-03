@@ -3,6 +3,8 @@ export type WMultiselectProps<TModelValue = any, TOption = TModelValue> = {
 	options?: TOption[];
 	placeholder?: string;
 	object?: boolean;
+	label?: string;
+	trackBy?: string | string[];
 }
 
 export type WMultiselectEmits<TModelValue = any> = {
