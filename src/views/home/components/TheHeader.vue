@@ -1,29 +1,46 @@
 <script setup lang="ts">
-import HeaderBase       from "@/components/AppHeader/HeaderBase.vue";
-import { AppIcon }      from "@/components/AppIcon";
-import { DropdownMenu } from "@/components/DropdownMenu";
-import { FormSearch }   from "@/components/FormSearch";
-import { useAppStore }  from "@/store";
+import { type DropdownMenuItem, WAppHeader, WIcon } from "@/components";
+import WDropdownMenu                                from "@/components/core/DropdownMenu/WDropdownMenu.vue";
+import { useAppStore }                              from "@/store";
+import { useRouter }                                from "vue-router";
+import TheFormAISearch                              from "./FormAISearch/FormAISearch.vue";
 
 const appStore = useAppStore();
+const router = useRouter();
+
+const dropdownItems: DropdownMenuItem[] = [
+	{
+		label: "O projektu",
+		onClick() {
+			router.push({ name: "about-project" });
+		}
+	},
+	{
+		label: "Seznam cestopisů",
+		onClick() {
+			router.push({ name: "travelogues-list" });
+		}
+	}
+];
+
 </script>
 
 <template>
-	<HeaderBase disable-arrow-back>
+	<WAppHeader disable-arrow-back>
 		<div class="flex flex-col flex-shrink w-full">
 			<div class="flex">
 				<div class="flex-1">
-					<FormSearch class="w-full" />
+					<TheFormAISearch class="w-full" />
 				</div>
 
 				<div class="ml-5">
-					<DropdownMenu :items="[{ label: 'item-1' }, { label: 'item-2' }, { label: 'item-2'}]">
+					<WDropdownMenu :items="dropdownItems">
 						<template #button="{ clickHandler }">
 							<button class="btn btn--tertiary btn--circle" @click="clickHandler()">
-								<AppIcon name="bars-3" size="regular" />
+								<WIcon name="bars-3" size="regular" />
 							</button>
 						</template>
-					</DropdownMenu>
+					</WDropdownMenu>
 				</div>
 			</div>
 
@@ -34,10 +51,10 @@ const appStore = useAppStore();
 				>
 					<div>Jednotlivé parametry vyhledávání můžeš zadat do formuláře</div>
 					<div>
-						<AppIcon name="cursor-arrow-rays" :size="['1.8rem']" />
+						<WIcon name="cursor-arrow-rays" :size="['1.8rem']" />
 					</div>
 				</div>
 			</div>
 		</div>
-	</HeaderBase>
+	</WAppHeader>
 </template>

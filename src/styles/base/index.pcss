@@ -1,0 +1,81 @@
+@import "../../../node_modules/tailwindcss/base.css";
+@import "../../../node_modules/modern-normalize/modern-normalize.css";
+
+* {
+	scrollbar-width: thin;
+	scrollbar-color: theme("colors.brown.dark") theme("colors.brown.light");
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+	width: 1rem;
+	cursor: grab;
+}
+
+*::-webkit-scrollbar-track {
+	background: theme("colors.brown.light");
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: theme("colors.brown.dark");
+	border-radius: 1rem;
+	border: 3px solid theme("colors.brown.light");
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-family: theme("fontFamily.body"), sans-serif;
+	color: theme("colors.primary");
+	font-size: theme("fontSize.regular");
+	line-height: 1.7;
+	letter-spacing: 1px;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: none;
+		outline: none;
+	}
+
+	&.linkHover {
+		transition: all 0.3s ease-in-out;
+
+		&:hover {
+			color: theme("colors.primary");
+		}
+	}
+}
+
+
+a[href^="tel:"],
+a[href^="fax:"],
+.website {
+	text-decoration: none;
+}
+
+.website:hover {
+	text-decoration: underline;
+}
+
+p {
+	display: block;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+button {
+	background-color: transparent;
+	padding: 0;
+	outline: none;
+	border: none;
+}
+

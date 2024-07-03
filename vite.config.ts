@@ -7,22 +7,24 @@ import svgLoader        from "vite-svg-loader";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  build: {
-    assetsDir: "assets"
-  },
-  plugins: [
-    vue(),
-    svgLoader({
-      defaultImport: "url"
-    })
-  ],
-  resolve: {
-    alias: {
-      "@": getFilePath("./src")
-    }
-  }
+	build: {
+		outDir: "dist",
+		target: "esnext",
+		assetsDir: "assets"
+	},
+	plugins: [
+		vue(),
+		svgLoader({
+			defaultImport: "url"
+		})
+	],
+	resolve: {
+		alias: {
+			"@": getFilePath("./src")
+		}
+	}
 });
 
 function getFilePath(input: string) {
-  return fileURLToPath(new URL(input, import.meta.url));
+	return fileURLToPath(new URL(input, import.meta.url));
 }

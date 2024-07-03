@@ -1,0 +1,88 @@
+@import "../../../node_modules/@vueform/multiselect/themes/default.css";
+
+.multiselect {
+	--ms-font-size: theme("fontSize.regular");
+	--ms-border-color: theme("colors.brown.inputBorder");
+	--ms-radius: 0.5rem;
+	--ms-border-width: 1px;
+	--ms-bg: theme("colors.brown.input");
+	--ms-py: theme("padding.4");
+	--ms-px: theme("padding.6");
+	--ms-line-height: 1.7;
+	--ms-caret-color: theme("colors.brown.dark");
+
+	--ms-border-color-active: inherit;
+
+	--ms-bg-disabled: theme("colors.gray.light");
+
+
+	--ms-ring-color: none;
+	--ms-ring-width: 0;
+
+	--ms-placeholder-color: theme("colors.brown.inputText");
+
+	--ms-option-font-size: theme("fontSize.regular");
+	--ms-option-line-height: 1.7;
+
+	--ms-option-bg-pointed: theme("colors.secondary");
+	--ms-option-color-pointed: theme("colors.white");
+
+	--ms-option-bg-selected: theme("colors.secondary");
+	--ms-option-color-selected: theme("colors.white");
+
+	--ms-option-bg-disabled: #FFFFFF;
+	--ms-option-color-disabled: #D1D5DB;
+
+	--ms-option-bg-selected-pointed: theme("colors.secondary");
+	--ms-option-color-selected-pointed: theme("colors.white");
+
+	--ms-option-bg-selected-disabled: #FFFFFF;
+	--ms-option-color-selected-disabled: #D1FAE5;
+
+	--ms-option-py: theme("padding.4");
+	--ms-option-px: theme("padding.6");
+
+	color: theme("colors.primary");
+
+
+	.multiselect-option {
+
+		&.is-pointed {
+			background: theme("colors.secondary");
+			color: theme("colors.white");
+		}
+
+		&.is-selected {
+			background: theme("colors.secondary");
+			color: theme("colors.white");
+		}
+
+		&.is-disabled {
+			background: var(--ms-option-bg-disabled, #FFFFFF);
+			color: var(--ms-option-color-disabled, #D1D5DB);
+			cursor: not-allowed;
+		}
+
+		&.is-selected.is-pointed {
+			background: var(--ms-option-bg-selected-pointed, #26c08e);
+			color: var(--ms-option-color-selected-pointed, #FFFFFF);
+		}
+
+		&.is-selected.is-disabled {
+			background: var(--ms-option-bg-selected-disabled, #87dcc0);
+			color: var(--ms-option-color-selected-disabled, #D1FAE5);
+		}
+	}
+
+	&.is-disabled {
+		border: 1px solid theme("colors.gray.DEFAULT");
+		background: theme("colors.gray.light");
+		--ms-placeholder-color: theme("colors.gray.dark");
+	}
+
+	&.is-active {
+		.multiselect-search {
+			background-color: theme("colors.white");
+		}
+	}
+}

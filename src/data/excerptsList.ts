@@ -1,6 +1,6 @@
 import type { Excerpt } from "@/types";
 
-export const excerptsList: Excerpt[] = [
+export const EXCERPTS_LIST: Excerpt[] = [
 	{
 		id: "1",
 		name: "Syra, Hurmopolis",

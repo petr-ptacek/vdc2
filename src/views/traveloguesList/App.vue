@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import HeaderBase from "@/components/AppHeader/HeaderBase.vue";
+import { WAppHeader } from "@/components";
 </script>
 
 <template>
 	<div class="w-full h-full flex flex-col">
-		<HeaderBase class="relative">
+		<WAppHeader class="relative">
 			<div class="text-[3rem] font-semibold absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
 				Seznam Cestopisů
 			</div>
-		</HeaderBase>
+		</WAppHeader>
 
 		<main class="flex-1 bg-brown-semi p-4">
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium amet asperiores at atque, blanditiis
