@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { WNavHorizontal, type NavHorizontalItem } from "src/components/core/NavHorizontal";
+import { WNavHorizontal, type NavHorizontalItem } from "@/components/core/NavHorizontal";
 import { ref }                                    from "vue";
 
 const selectedItem = ref<NavHorizontalItem | null>(null);

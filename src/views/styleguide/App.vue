@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import VSheet         from "./VSheet.vue";
-import VueMultiselect from "@vueform/multiselect";
+import { WAccordion, WMultiselect } from "@/components";
+import VueMultiselect               from "@vueform/multiselect";
+import VSheet                       from "./VSheet.vue";
 </script>
 
 <template>
@@ -11,7 +12,7 @@ import VueMultiselect from "@vueform/multiselect";
 					<div class="flex flex-col gap-4">
 						<div class="text-xl">Accordion</div>
 
-						<AppAccordion header-clickable>
+						<WAccordion header-clickable>
 							<template #title>
 								Click at me
 							</template>
@@ -20,7 +21,7 @@ import VueMultiselect from "@vueform/multiselect";
 								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam earum id perspiciatis possimus quasi
 								quia quo vero? Atque dolores, omnis.
 							</div>
-						</AppAccordion>
+						</WAccordion>
 					</div>
 				</VSheet>
 
@@ -177,6 +178,20 @@ import VueMultiselect from "@vueform/multiselect";
 								:options="['aneta', 'mariana']"
 								searchable
 								placeholder="Write something ..." />
+						</div>
+					</div>
+				</VSheet>
+
+				<VSheet>
+					<div class="flex gap-4 flex-col">
+						<div class="text-xl">WMultiselect</div>
+
+						<div class="flex flex-col gap-10">
+							<WMultiselect
+								model-value="''"
+								class="multiselect"
+								:options="['aneta', 'mariana']"
+								placeholder="Select name" />
 						</div>
 					</div>
 				</VSheet>
