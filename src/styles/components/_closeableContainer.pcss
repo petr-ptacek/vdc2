@@ -1,0 +1,17 @@
+.closeable-container {
+	/*display: grid;*/
+	/*grid-template-rows: 1fr;*/
+	/*transition: grid-template-rows 0.5s;*/
+	background-color: red;
+	transition: transform 0.5s;
+	transform-origin: top;
+
+	.closeable-container-content {
+		overflow: hidden;
+	}
+
+	&[data-is-closed="true"] {
+		transform: scaleY(0);
+		/*grid-template-rows: 0;*/
+	}
+}
