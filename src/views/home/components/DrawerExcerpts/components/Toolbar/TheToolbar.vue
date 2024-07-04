@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { WDrawerContainer, WIcon, WMultiselect } from "@/components";
-import { ref }                                   from "vue";
+import { reactive, ref }                         from "vue";
+import SortButton                                from "./SortButton.vue";
+import { useSortState }                          from "./useSortState";
+
+const sortState = reactive(useSortState({ dir: "none" }));
 
 type User = {
 	id: string;
@@ -30,19 +34,18 @@ const extendedOptionsOpened = ref(false);
 <template>
 	<div class="flex flex-col gap-4">
 		<div class="flex items-center gap-4">
+			<SortButton
+				:active="sortState.sortActive"
+				:sort-icon="sortState.sortIcon"
+				@click="sortState.toggle()"
+			/>
+
 			<WMultiselect
 				v-model="selectedUser"
 				:options="selectOptions"
 				object
 				placeholder="Vyhledat dle cestopisu"
 			/>
-
-			<div>
-				<button class="btn btn--secondary px-4 py-3">
-					<WIcon name="chevron-up" size="sm" />
-					<WIcon name="chevron-down" size="sm" />
-				</button>
-			</div>
 		</div>
 
 		<div>

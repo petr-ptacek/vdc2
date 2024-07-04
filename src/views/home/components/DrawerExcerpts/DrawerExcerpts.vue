@@ -2,8 +2,8 @@
 import { WDrawerContainer, WIcon } from "@/components";
 import { EXCERPTS_LIST }           from "@/data";
 import { eventBus }                from "@/eventBus/eventBus";
-import { useExcerptDetailStore }   from "@/store";
-import TheToolbar                  from "@/views/home/components/DrawerExcerpts/components/TheToolbar.vue";
+import { useExcerptDetailStore } from "@/store";
+import TheToolbar                from "@/views/home/components/DrawerExcerpts/components/Toolbar/TheToolbar.vue";
 
 const excerptDetailStore = useExcerptDetailStore();
 

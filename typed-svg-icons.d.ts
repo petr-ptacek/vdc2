@@ -4,9 +4,12 @@ declare interface _SVGIcons_ {
 	"ai-search": "ai-search";
 	"bars-3": "bars-3";
 	"bars-4": "bars-4";
+	"bars-arrow-down": "bars-arrow-down";
+	"bars-arrow-up": "bars-arrow-up";
 	"chevron-down": "chevron-down";
 	"chevron-left": "chevron-left";
 	"chevron-right": "chevron-right";
+	"chevron-up-down": "chevron-up-down";
 	"chevron-up": "chevron-up";
 	"cursor-arrow-rays": "cursor-arrow-rays";
 	"digeocat-lib": "digeocat-lib";
