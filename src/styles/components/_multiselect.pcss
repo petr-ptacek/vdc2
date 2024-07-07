@@ -1,5 +1,6 @@
 @import "@vueform/multiselect/themes/default.css";
 
+.multiselect-dropdown,
 .multiselect {
 	--ms-max-height: 40rem;
 
@@ -44,16 +45,16 @@
 	--ms-option-py: theme("padding.4");
 	--ms-option-px: theme("padding.6");
 
-	--ms-tag-font-size: 1.2rem;
+	--ms-tag-font-size: 1rem;
 	--ms-tag-line-height: 1.25rem;
 	--ms-tag-font-weight: 600;
 	--ms-tag-bg: theme("colors.secondary");
 	--ms-tag-bg-disabled: #9CA3AF;
 	--ms-tag-color: #FFFFFF;
 	--ms-tag-color-disabled: #FFFFFF;
-	--ms-tag-radius: 4px;
-	--ms-tag-py: 0.5rem;
-	--ms-tag-px: 0.8rem;
+	--ms-tag-radius: theme("borderRadius.xl");
+	--ms-tag-py: theme("padding[1.5]");
+	--ms-tag-px: theme("padding.2");
 	--ms-tag-my: 0.8rem;
 	--ms-tag-mx: 0.8rem;
 
@@ -64,44 +65,9 @@
 	--ms-tag-remove-mx: 0.125rem;
 
 	color: theme("colors.primary");
+}
 
-	/*.multiselect-search {*/
-	/*	padding-right: 6rem;*/
-	/*}*/
-
-	.multiselect-tags-search-wrapper {
-		flex: 1 1 100%;
-	}
-
-	.multiselect-option {
-
-		&.is-pointed {
-			background: theme("colors.secondary");
-			color: theme("colors.white");
-		}
-
-		&.is-selected {
-			background: theme("colors.secondary");
-			color: theme("colors.white");
-		}
-
-		&.is-disabled {
-			background: var(--ms-option-bg-disabled, #FFFFFF);
-			color: var(--ms-option-color-disabled, #D1D5DB);
-			cursor: not-allowed;
-		}
-
-		&.is-selected.is-pointed {
-			background: var(--ms-option-bg-selected-pointed, #26c08e);
-			color: var(--ms-option-color-selected-pointed, #FFFFFF);
-		}
-
-		&.is-selected.is-disabled {
-			background: var(--ms-option-bg-selected-disabled, #87dcc0);
-			color: var(--ms-option-color-selected-disabled, #D1FAE5);
-		}
-	}
-
+.multiselect {
 	&.is-disabled {
 		border: 1px solid theme("colors.gray.DEFAULT");
 		background: theme("colors.gray.light");
@@ -114,4 +80,41 @@
 			background-color: theme("colors.white");
 		}
 	}
+}
+
+/*.multiselect-search {*/
+/*	padding-right: 6rem;*/
+/*}*/
+
+.multiselect-option {
+
+	&.is-pointed {
+		background: theme("colors.secondary");
+		color: theme("colors.white");
+	}
+
+	&.is-selected {
+		background: theme("colors.secondary");
+		color: theme("colors.white");
+	}
+
+	&.is-disabled {
+		background: var(--ms-option-bg-disabled, #FFFFFF);
+		color: var(--ms-option-color-disabled, #D1D5DB);
+		cursor: not-allowed;
+	}
+
+	&.is-selected.is-pointed {
+		background: var(--ms-option-bg-selected-pointed, #26c08e);
+		color: var(--ms-option-color-selected-pointed, #FFFFFF);
+	}
+
+	&.is-selected.is-disabled {
+		background: var(--ms-option-bg-selected-disabled, #87dcc0);
+		color: var(--ms-option-color-selected-disabled, #D1FAE5);
+	}
+}
+
+.multiselect-tags-search-wrapper {
+	flex: 1 1 100%;
 }

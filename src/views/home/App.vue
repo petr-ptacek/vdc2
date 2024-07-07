@@ -3,7 +3,7 @@ import {
 	ComplexDatePicker,
 	WAccordion,
 	WDrawerContainer,
-	WLeafletMap
+	WLeafletMap, WMultiselectTags
 }                         from "@/components";
 import { useAppStore }    from "@/store";
 import TheAIHelp          from "./components/AIHelp.vue";
@@ -37,43 +37,67 @@ const appStore = useAppStore();
 							<div class="p-1.5">
 								<div class="flex flex-col gap-1.5">
 									<div>
-										<div class="text-gray uppercase text-sm">Autor</div>
-
-										<label class="form-field">
-											<input type="email" name="email" autocomplete="off" />
+										<label for="multiselect-tags-autor" class="uppercase text-[1.2rem]">
+											<span class="">Autor</span>
 										</label>
+										<WMultiselectTags
+											:config="{
+												id: 'multiselect-tags-autor',
+												placeholder: 'Autor'
+											}"
+										/>
 									</div>
 
 									<div>
-										<div class="text-gray uppercase text-sm">Cestopis</div>
-
-										<label class="form-field">
-											<input type="email" name="email" autocomplete="off" />
+										<label for="multiselect-tags-travelogue" class="uppercase text-[1.2rem]">
+											<span class="">Cestopis</span>
 										</label>
+
+										<WMultiselectTags
+											:config="{
+												id: 'multiselect-tags-travelogue',
+												placeholder: 'Cestopis'
+											}"
+										/>
 									</div>
 
 									<div>
-										<div class="text-gray uppercase text-sm">Oblast</div>
-
-										<label class="form-field">
-											<input type="email" name="email" autocomplete="off" />
+										<label for="multiselect-tags-area" class="uppercase text-[1.2rem]">
+											<span class="">Oblast</span>
 										</label>
+
+										<WMultiselectTags
+											:config="{
+												id: 'multiselect-tags-area',
+												placeholder: 'Oblast'
+											}"
+										/>
 									</div>
 
 									<div>
-										<div class="text-gray uppercase text-sm">Téma</div>
-
-										<label class="form-field">
-											<input type="email" name="email" autocomplete="off" />
+										<label for="multiselect-tags-thema" class="uppercase text-[1.2rem]">
+											<span class="">Téma</span>
 										</label>
+
+										<WMultiselectTags
+											:config="{
+												id: 'multiselect-tags-thema',
+												placeholder: 'Téma'
+											}"
+										/>
 									</div>
 
 									<div>
-										<div class="text-gray uppercase text-sm">Doprava</div>
-
-										<label class="form-field">
-											<input type="email" name="email" autocomplete="off" />
+										<label for="multiselect-tags-transport" class="uppercase text-[1.2rem]">
+											<span class="">Doprava</span>
 										</label>
+
+										<WMultiselectTags
+											:config="{
+												id: 'multiselect-tags-transport',
+												placeholder: 'Doprava'
+											}"
+										/>
 									</div>
 								</div>
 							</div>

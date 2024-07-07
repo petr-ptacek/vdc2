@@ -20,6 +20,7 @@ const _config = computed<MultiselectConfig>(() => {
 		createOption: true,
 		searchable: true,
 		options: options.value,
+		appendToBody: true,
 		...props.config
 	};
 });
