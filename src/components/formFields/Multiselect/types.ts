@@ -70,6 +70,23 @@ export type VueMultiselectProps = {
 	appendTo?: string;
 }
 
+export type VueMultiselectListeners = {
+	onChange?: (value: any, instance: object) => object | void;
+	onSelect?: (value: any, option: any, instance: object) => object | void;
+	onDeselect?: (value: any, option: any, instance: object) => object | void;
+	onSearchChange?: (query: string, instance: object) => object | void;
+	// onCreate?: (option: any, instance: object) => object | void;
+	onPaste?: (e: Event, instance: object) => object | void;
+	onKeydown?: (e: Event, instance: object) => object | void;
+	onKeyup?: (e: Event, instance: object) => object | void;
+	onOpen?: (instance: object) => object | void;
+	onClose?: (instance: object) => object | void;
+	onClear?: (instance: object) => object | void;
+	onMax?: (instance: object) => object | void;
+}
+
+export type VueMultiselectListenersKeys = keyof VueMultiselectListeners;
+
 export type VueMultiselectSlots = {
 	placeholder: VNode[];
 	afterlist: (props: { options: any[] }) => VNode[];
@@ -96,10 +113,14 @@ export type VueMultiselectSlots = {
 	spinner: VNode[];
 }
 
+export type MultiselectConfig =
+	Omit<VueMultiselectProps, "value" | "modelValue"> &
+	VueMultiselectListeners;
+
 export type WMultiselectProps = {
 	value?: any;
 	modelValue?: any;
-	config?: Omit<VueMultiselectProps, "value" | "modelValue">
+	config?: MultiselectConfig;
 }
 
 export type WMultiselectEmits = {

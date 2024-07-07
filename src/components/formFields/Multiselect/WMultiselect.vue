@@ -1,75 +1,24 @@
 <script setup lang="ts">
-import { WIcon }                                                                               from "@/components";
-import VueMultiselect
-																																															 from "@vueform/multiselect";
-import { computed }                                                                            from "vue";
-import type { VueMultiselectProps, VueMultiselectSlots, WMultiselectEmits, WMultiselectProps } from "./types";
+import { WIcon }                                       from "@/components";
+import VueMultiselect                                  from "@vueform/multiselect";
+import type { VueMultiselectSlots, WMultiselectProps } from "./types";
+import { useVueMultiselectListeners }                  from "./useVueMultiselectListeners";
+import { useVueMultiselectProps }                      from "./useVueMultiselectProps";
 
 const props = defineProps<WMultiselectProps>();
-const emit = defineEmits<WMultiselectEmits>();
 defineSlots<VueMultiselectSlots>();
 
 const _modelValue = defineModel<any>();
-
-const config = computed<VueMultiselectProps>(() => {
-	return {
-		value: props.value,
-		...props.config
-	};
-});
-
-const handlers = {
-	"change": (value: any, instance: object): object | void => {
-		emit("change", value, instance);
-	},
-	"select": (value: any, option: any, instance: object): object | void => {
-		emit("select", value, option, instance);
-	},
-	"deselect": (value: any, option: any, instance: object): object | void => {
-		emit("deselect", value, option, instance);
-	},
-	"search-change": (query: string, instance: object): object | void => {
-		emit("search-change", query, instance);
-	},
-	"tag": (option: any, instance: object): object | void => {
-		emit("tag", option, instance);
-	},
-	"option": (option: any, instance: object): object | void => {
-		emit("option", option, instance);
-	},
-	"create": (option: any, instance: object): object | void => {
-		emit("create", option, instance);
-	},
-	"paste": (e: Event, instance: object): object | void => {
-		emit("paste", e, instance);
-	},
-	"keydown": (e: Event, instance: object): object | void => {
-		emit("keydown", e, instance);
-	},
-	"keyup": (e: Event, instance: object): object | void => {
-		emit("keyup", e, instance);
-	},
-	"open": (instance: object): object | void => {
-		emit("open", instance);
-	},
-	"close": (instance: object): object | void => {
-		emit("close", instance);
-	},
-	"clear": (instance: object): object | void => {
-		emit("clear", instance);
-	},
-	"max": (instance: object): object | void => {
-		emit("max", instance);
-	}
-};
+const _multiselectProps = useVueMultiselectProps(props);
+const _multiselectListeners = useVueMultiselectListeners(props);
 </script>
 
 <template>
 	<VueMultiselect
 		v-model="_modelValue"
 		class="multiselect"
-		v-bind="config"
-		v-on="handlers"
+		v-bind="_multiselectProps"
+		v-on="_multiselectListeners"
 	>
 		<template #caret="{ handleCaretClick, isOpen}">
 			<WIcon

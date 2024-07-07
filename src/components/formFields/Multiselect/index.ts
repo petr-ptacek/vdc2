@@ -2,7 +2,8 @@ import WMultiselect from "./WMultiselect.vue";
 
 export type {
 	WMultiselectProps,
-	WMultiselectEmits
+	WMultiselectEmits,
+	MultiselectConfig
 } from "./types";
 
 export {
