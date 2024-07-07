@@ -73,10 +73,10 @@ const handlers = {
 	>
 		<template #caret="{ handleCaretClick, isOpen}">
 			<WIcon
-				name="chevron-up"
+				name="chevron-down"
 				size="md"
 				class="text-secondary z-10 mr-4 pointer-events-none transition-transform"
-				:class="{ '-rotate-180 pointer-events-auto': isOpen }"
+				:class="{ 'rotate-180 pointer-events-auto': isOpen }"
 				@click="handleCaretClick"
 			/>
 		</template>
