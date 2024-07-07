@@ -16,7 +16,7 @@ defineProps<{
 		<WIcon :name="sortIcon" :size="'md'" />
 
 		<WTooltip identifier="sort-button">
-			<div>Třídit dle</div>
+			<div>Setřídit</div>
 		</WTooltip>
 	</button>
 </template>
