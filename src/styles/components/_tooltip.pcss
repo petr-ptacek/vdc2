@@ -1,67 +1,89 @@
 /*
-   Tooltip:
-
-   - Class tooltip může patřít k textu ke kterému chceme tootlip přiřadit
-   musí mít jen relativní pozici a centruje se na střed bloku tomu bloku můžeme přidat class .width-fit
-
-   <div class="tooltip">
-      <span class="tooltip-content">.tooltip</span>
-      Placeholder pro ukázku tooltipu
-   </div>
+https://www.smashingmagazine.com/2024/03/modern-css-tooltips-speech-bubbles-part1/
 */
 
 .tooltip {
-	position: relative;
+	/* triangle dimension */
+	--b: 1.6em; /* base */
+	--h: 0.8em; /* height */
 
-	.tooltip-content {
-		z-index: -1;
-		opacity: 0;
-		position: absolute;
-		top: -5rem;
-		left: 50%;
-		transform: translateX(-50%);
-		background-color: theme("colors.primary");
-		color: theme("colors.white");
-		font-size: 13px;
-		font-weight: 500;
-		line-height: 1.5;
-		width: max-content;
-		padding: 1rem 1.5rem;
-		border-radius: 0.5rem;
-		transition: all 0.3s ease-in-out;
-		pointer-events: none;
+	--p: 50%; /* position  */
+	--r: 0.5rem; /* the radius */
+	--c: theme("colors.primary");
 
-		&:before {
-			position: absolute;
-			top: 100%;
-			left: calc(50% - 0.8rem);
-			content: '';
-			width: 0;
-			height: 0;
-			border-left: 0.8rem solid transparent;
-			border-right: 0.8rem solid transparent;
-			border-top: 0.8rem solid theme("colors.primary");
-		}
+	color: theme("colors.white");
+	font-size: 12px;
+	max-width: 32ch;
+	min-width: 12ch;
+	text-align: center;
+	padding: 1rem 1.5rem;
+	border-radius: var(--r);
+	background: var(--c);
+	opacity: 0;
+	position: fixed;
+	pointer-events: none;
+	transition: opacity 0.3s ease-in-out;
+	z-index: -1000;
+
+	&.is-active {
+		opacity: 1;
+		z-index: 1000;
 	}
+}
 
-	&.tooltip--bottom {
-		.tooltip-content {
-			top: 100%;
-			transform: translateX(-50%) translateY(1.2rem);
+.tooltip--top {
+	clip-path: polygon(
+		0 0,
+		0 100%,
+		100% 100%,
+		100% 0,
+		min(100%, var(--p) + var(--b) / 2) 0,
+		var(--p) calc(-1 * var(--h)),
+		max(0%, var(--p) - var(--b) / 2) 0
+	);
+	border-radius: min(var(--r), var(--p) - var(--b) / 2) min(var(--r), 100% - var(--p) - var(--b) / 2) var(--r) var(--r)/var(--r);
+	border-image: conic-gradient(var(--c) 0 0) fill 0/ 	0 calc(100% - var(--p) - var(--b) / 2) var(--r) calc(var(--p) - var(--b) / 2)/var(--h) 0 0 0;
+}
 
-			&:before {
-				top: unset;
-				bottom: 100%;
-				transform: rotate(180deg);
-			}
-		}
-	}
+.tooltip--right {
 
-	&.tooltip-is-active,
-	&:hover {
-		.tooltip-content {
-			opacity: 1;
-			z-index: 0;
-		}
-	}
+	clip-path: polygon(
+		100% 100%,
+		0 100%,
+		0 0,
+		100% 0,
+		100% max(0%, var(--p) - var(--b) / 2),
+		calc(100% + var(--h)) var(--p),
+		100% min(100%, var(--p) + var(--b) / 2)
+	);
+	border-radius: var(--r)/var(--r) min(var(--r), var(--p) - var(--b) / 2) min(var(--r), 100% - var(--p) - var(--b) / 2) var(--r);
+	border-image: conic-gradient(var(--c) 0 0) fill 0/ calc(var(--p) - var(--b) / 2) 0 calc(100% - var(--p) - var(--b) / 2) var(--r)/0 var(--h) 0 0;
+}
+
+.tooltip--bottom {
+	clip-path: polygon(
+		0 100%,
+		0 0,
+		100% 0,
+		100% 100%,
+		min(100%, var(--p) + var(--b) / 2) 100%,
+		var(--p) calc(100% + var(--h)),
+		max(0%, var(--p) - var(--b) / 2) 100%
+	);
+	border-image: conic-gradient(var(--c) 0 0) fill 0/ var(--r) calc(100% - var(--p) - var(--b) / 2) 0 calc(var(--p) - var(--b) / 2) / 0 0 var(--h) 0;
+	border-radius: var(--r) var(--r) min(var(--r), 100% - var(--p) - var(--b) / 2) min(var(--r), var(--p) - var(--b) / 2)/var(--r);
+}
+
+.tooltip--left {
+	clip-path: polygon(
+		0 100%,
+		100% 100%,
+		100% 0,
+		0 0,
+		0 max(0%, var(--p) - var(--b) / 2),
+		calc(-1 * var(--h)) var(--p),
+		0 min(100%, var(--p) + var(--b) / 2)
+	);
+	border-image: conic-gradient(var(--c) 0 0) fill 0/ 	calc(var(--p) - var(--b) / 2) var(--r) calc(100% - var(--p) - var(--b) / 2) 0/ 	0 0 0 var(--h);
+	border-radius: var(--r)/min(var(--r), var(--p) - var(--b) / 2) var(--r) var(--r) min(var(--r), 100% - var(--p) - var(--b) / 2);
 }

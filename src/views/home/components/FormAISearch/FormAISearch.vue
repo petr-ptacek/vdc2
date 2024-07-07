@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { WIcon, WInputSearch }         from "@/components";
-import { useAppStore, useSearchStore } from "@/store";
-import { ref }                         from "vue";
+import { WIcon, WInputSearch, WTooltip } from "@/components";
+import { useAppStore, useSearchStore }   from "@/store";
+import { ref }                           from "vue";
 
 const searchStore = useSearchStore();
 const appStore = useAppStore();
@@ -28,16 +28,19 @@ function openModalHowToUseAI() {
 			placeholder="Zadej parametry pro hledání cestopisů ..."
 		/>
 
-		<div class="tooltip tooltip--bottom">
-			<button
-				type="button"
-				class="btn btn--tertiary btn--ico-only"
-				@click="openModalHowToUseAI()"
-			>
-				<WIcon name="question-mark-circle" size="regular" />
-			</button>
+
+		<button
+			v-tooltip="{ id: 'how-to-use-ai', dir: 'bottom' }"
+			type="button"
+			class="btn btn--tertiary btn--ico-only"
+			@click="openModalHowToUseAI()"
+		>
+			<WIcon name="question-mark-circle" size="regular" />
+		</button>
+
+		<WTooltip identifier="how-to-use-ai">
 			<div class="tooltip-content">Jak používat AI</div>
-		</div>
+		</WTooltip>
 
 		<button
 			type="submit"
