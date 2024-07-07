@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { WDrawerContainer, WIcon, WMultiselect } from "@/components";
-import { reactive, ref }                         from "vue";
-import SortButton                                from "./SortButton.vue";
-import { useSortState }                          from "./useSortState";
+import { WDrawerContainer, WIcon, WMultiselect, WTooltip } from "@/components";
+import { reactive, ref }                                   from "vue";
+import SortButton                                          from "./SortButton.vue";
+import { useSortState }                                    from "./useSortState";
 
 const sortState = reactive(useSortState({ dir: "none" }));
 
@@ -42,8 +42,12 @@ const extendedOptionsOpened = ref(false);
 
 			<WMultiselect
 				v-model="selectedUser"
-				:options="selectOptions"
-				object
+				:config="{
+					object: true,
+					valueProp: 'id',
+					options: selectOptions
+				}"
+
 				placeholder="Vyhledat dle cestopisu"
 			/>
 		</div>
@@ -72,12 +76,27 @@ const extendedOptionsOpened = ref(false);
 				size="6rem"
 			>
 				<div class="flex h-full items-end justify-center gap-4">
-					<button class="btn btn--secondary btn--circle w-fit h-fit">
+					<button
+						v-tooltip="{ id: 'drawer-print-action', dir: 'top' }"
+						class="btn btn--secondary btn--circle w-fit h-fit"
+					>
 						<WIcon name="printer" size="md" />
 					</button>
-					<button class="btn btn--secondary btn--circle w-fit h-fit">
+
+					<WTooltip identifier="drawer-print-action">
+						<div>Vytisknout data</div>
+					</WTooltip>
+
+					<button
+						v-tooltip="{ id: 'drawer-export-data-action', dir: 'top' }"
+						class="btn btn--secondary btn--circle w-fit h-fit"
+					>
 						<WIcon name="document-arrow-up" size="md" />
 					</button>
+
+					<WTooltip identifier="drawer-export-data-action">
+						<div>Exportovat data</div>
+					</WTooltip>
 				</div>
 			</WDrawerContainer>
 		</div>

@@ -27,7 +27,13 @@ function _resolveIcon(dir: SortDirection): WIconProps["name"] {
 }
 
 export function useSortState(options?: UseSortStateOptions) {
-	let _idx = 0;
+	const _idx = ref(0);
+	const _nextIdx = computed(() => {
+		return _idx.value + 1 > 2 ? 0 : _idx.value + 1;
+	});
+	const nexDirection = computed(() => {
+		return _direction[_nextIdx.value];
+	});
 	const direction = ref<SortDirection>(options?.dir ?? "none");
 	const sortIcon = ref<WIconProps["name"]>(_resolveIcon(direction.value));
 	const sortActive = computed(() => {
@@ -39,8 +45,8 @@ export function useSortState(options?: UseSortStateOptions) {
 	});
 
 	function _incrementIdx() {
-		_idx = _idx + 1 > 2 ? 0 : _idx + 1;
-		return _idx;
+		_idx.value = _idx.value + 1 > 2 ? 0 : _idx.value + 1;
+		return _idx.value;
 	}
 
 	// function _decrementIdx() {
@@ -62,6 +68,7 @@ export function useSortState(options?: UseSortStateOptions) {
 		change,
 		toggle,
 		sortActive,
+		nexDirection,
 		direction: readonly(direction),
 		sortIcon: readonly(sortIcon)
 	};
