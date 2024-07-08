@@ -1,16 +1,19 @@
 <script setup lang="ts">
 import { WIcon }                                       from "@/components";
 import VueMultiselect                                  from "@vueform/multiselect";
+import { computed }                                    from "vue";
 import type { VueMultiselectSlots, WMultiselectProps } from "./types";
-import { useVueMultiselectListeners }                  from "./useVueMultiselectListeners";
-import { useVueMultiselectProps }                      from "./useVueMultiselectProps";
 
 const props = defineProps<WMultiselectProps>();
 defineSlots<VueMultiselectSlots>();
 
 const _modelValue = defineModel<any>();
-const _multiselectProps = useVueMultiselectProps(props);
-const _multiselectListeners = useVueMultiselectListeners(props);
+const _multiselectProps = computed(() => {
+	return {
+		value: props.value,
+		...props.config
+	};
+});
 </script>
 
 <template>
@@ -18,7 +21,6 @@ const _multiselectListeners = useVueMultiselectListeners(props);
 		v-model="_modelValue"
 		class="multiselect"
 		v-bind="_multiselectProps"
-		v-on="_multiselectListeners"
 	>
 		<template #caret="{ handleCaretClick, isOpen}">
 			<WIcon

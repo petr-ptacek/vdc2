@@ -42,7 +42,7 @@
 	--ms-option-color-selected-disabled: #D1FAE5;
 
 	--ms-option-py: 0.4rem;
-	--ms-option-px: var(--ms-px);
+	--ms-option-px: 1.4rem;
 
 	--ms-tag-font-size: 1rem;
 	--ms-tag-line-height: 1.25rem;
@@ -122,11 +122,23 @@
 	flex: 1 1 100%;
 	margin-left: 0;
 	margin-right: 0;
+	height: 4rem;
+	display: none;
+
+	.multiselect.is-open & {
+		display: block;
+	}
 }
 
+
 .multiselect-tags {
-	padding-left: var(--ms-px);
+	margin-right: 0.6rem;
+
+	.multiselect.is-open & + .multiselect-placeholder {
+		padding-left: 2.4rem;
+	}
 }
 
 .multiselect-tags-search {
+	padding: var(--ms-option-px);
 }

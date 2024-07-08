@@ -3,14 +3,14 @@ import { LISTENERS }                                                            
 import type { MultiselectConfig, VueMultiselectListeners, VueMultiselectProps, WMultiselectProps } from "./types";
 
 export function useVueMultiselectProps(props: WMultiselectProps): VueMultiselectProps {
-	const p = reactiveOmit<MultiselectConfig, keyof VueMultiselectListeners>(
-		props.config ?? {},
-		...Object.values(LISTENERS)
-	);
+	// const p = reactiveOmit<MultiselectConfig, keyof VueMultiselectListeners>(
+	// 	props.config ?? {},
+	// 	...Object.values(LISTENERS)
+	// );
 
 	return {
 		value: props.value,
-		...p
+		...props.config
 	};
 
 }
