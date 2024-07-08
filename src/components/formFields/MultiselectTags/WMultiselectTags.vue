@@ -5,9 +5,9 @@ import { type MultiselectConfig, WMultiselect, type WMultiselectProps } from "..
 const props = defineProps<WMultiselectProps>();
 
 const options = ref([
-	{ value: "batman", label: "Batman" },
-	{ value: "robin", label: "Robin" },
-	{ value: "joker", label: "Joker" }
+	{ value: "1", label: "Item 1" },
+	{ value: "2", label: "Item 2" },
+	{ value: "3", label: "Item 3" }
 ]);
 
 const _modelValue = defineModel("modelValue");
