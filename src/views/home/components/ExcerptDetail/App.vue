@@ -40,11 +40,16 @@ const currentTab = shallowRef<TabItem>(tabItems.value[0]!);
 						</template>
 					</WNavHorizontal>
 
-					<div class="flex-1">
-						<component
-							v-if="currentTab.data"
-							:is="currentTab.data.component"
-						/>
+					<div class="flex-1 flex flex-col">
+						<div class="flex-1">
+							<component
+								v-if="currentTab.data"
+								:is="currentTab.data.component"
+							/>
+						</div>
+						<div class="">
+							<!--Pagination-->
+						</div>
 					</div>
 				</div>
 			</template>

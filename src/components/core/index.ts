@@ -6,3 +6,4 @@ export * from "./Loader";
 export * from "./NavHorizontal";
 export * from "./DropdownMenu";
 export * from "./Tooltip";
+export * from "./Pagination";

@@ -22,5 +22,6 @@ declare interface _SVGIcons_ {
 	"printer": "printer";
 	"question-mark-circle": "question-mark-circle";
 	"search": "search";
+	"three-dots": "three-dots";
 	"x-mark": "x-mark";
 }
