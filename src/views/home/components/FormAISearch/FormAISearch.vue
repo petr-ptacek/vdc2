@@ -25,7 +25,7 @@ function openModalHowToUseAI() {
 			v-model="searchValue"
 			class="flex-1"
 			prepend-icon="ai-search"
-			placeholder="Zadej parametry pro hledání cestopisů ..."
+			placeholder="Zadejte se naší AI"
 		/>
 
 
@@ -46,7 +46,7 @@ function openModalHowToUseAI() {
 			type="submit"
 			class="btn btn--tertiary flex items-center gap-4"
 		>
-			<span>Hledat</span>
+			<span>Zpracuj</span>
 		</button>
 	</form>
 </template>

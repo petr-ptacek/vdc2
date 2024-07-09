@@ -72,8 +72,8 @@ const currentTab = shallowRef<TabItem>(tabItems.value[0]!);
 						<WMultiselect
 							style="--ms-border-width:0px; --ms-py: 1.8rem;"
 							:config="{
-								placeholder: 'Cestopisy daného úryvku',
-								options: Array.from({length:4}, (_,i)=> `Cestopis ${i}`)
+								placeholder: 'Úryvek obsažeb v knihách',
+								options: Array.from({length:4}, (_,i)=> `Kniha ${i}`)
 							}"
 						/>
 					</div>
