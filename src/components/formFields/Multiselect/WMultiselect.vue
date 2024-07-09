@@ -11,6 +11,7 @@ const _modelValue = defineModel<any>();
 const _multiselectProps = computed(() => {
 	return {
 		value: props.value,
+		canClear: false,
 		...props.config
 	};
 });
