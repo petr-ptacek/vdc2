@@ -54,7 +54,7 @@ const currentTab = shallowRef<TabItem>(tabItems.value[0]!);
 						</div>
 
 						<div class="flex justify-center pb-6">
-							<WPagination :items="[1,2,3,4,5,6,7]" :value="3" />
+							<WPagination :total-pages="40" :value="3" />
 						</div>
 					</div>
 				</div>

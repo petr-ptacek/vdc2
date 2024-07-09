@@ -166,7 +166,7 @@ function goTo(nth: number) {
 				:class="{ 'is-disabled': _disabledArrowNext }"
 				@click="goTo(_currentPageModelValue + 1)"
 			>
-				<WIcon class="page-link" name="chevron-right" />
+				<WIcon name="chevron-right" />
 			</li>
 		</ul>
 	</div>
