@@ -1,0 +1,51 @@
+.resizer-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	position: relative;
+}
+
+.resizer-container__section {
+	flex: 0 0 auto;
+	height: 100%;
+}
+
+.resizer-container__section-content {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.resizer-container__resizer {
+	position: absolute;
+	height: 100%;
+	width: 2px;
+	transform: translate(-50%);
+	z-index: 100;
+	background-color: #D9D9D9;
+}
+
+
+.resizer-container__resizer-content {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.resizer-container__resizer-handler {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 30px;
+	height: 70px;
+}
+
+.resizer-container__resizer-handler svg {
+	width: 100%;
+	height: 100%;
+}
+
+.resizer-container__resizer-handler:hover {
+	cursor: e-resize;
+}

@@ -1,19 +1,29 @@
 <script setup lang="ts">
-import WResizeableContainer from "@/components/containers/Resizeable/WResizeableContainer.vue";
+import { WResizerContainer } from "@/components";
 </script>
 
 <template>
 	<div class="h-screen bg-brown-semi justify-center flex items-center">
-		<div class="w-[600px] h-full">
-			<WResizeableContainer class="h-full bg-red" behaviour="default">
-				<div class="h-full">
-					<div class="p-4">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci autem distinctio dolorem doloremque
-						ducimus esse facilis inventore nesciunt nulla quod. Beatae ipsa maiores molestias obcaecati officia quia
-						quos unde voluptatem.
+		<div class="w-[1600px] h-full">
+			<WResizerContainer class="h-full">
+				<template #left>
+					<div class="h-full w-full bg-tertiary flex items-center justify-center">
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est hic necessitatibus odio placeat, ratione
+							repellat.
+						</p>
 					</div>
-				</div>
-			</WResizeableContainer>
+				</template>
+
+				<template #right>
+					<div class="h-full w-full bg-yellow flex items-center justify-center">
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est hic necessitatibus odio placeat, ratione
+							repellat.
+						</p>
+					</div>
+				</template>
+			</WResizerContainer>
 		</div>
 	</div>
 </template>
