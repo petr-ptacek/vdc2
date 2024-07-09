@@ -1,67 +1,87 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="TItem = any">
 import { WIcon }                                  from "@/components";
+import { computed, ref }                          from "vue";
 import type { WPaginationEmit, WPaginationProps } from "./types";
-import { computed }                               from "vue";
 
-const props = defineProps<WPaginationProps>();
-const emit = defineEmits<WPaginationEmit>();
+const props = withDefaults(
+	defineProps<WPaginationProps<TItem>>(),
+	{
+		modelValue: undefined,
+		items: () => []
+	}
+);
+const emit = defineEmits<WPaginationEmit<TItem>>();
 
-const currentPage = computed({
+const _totalPagesCount = computed(() => {
+	return props.totalPages ?? props.items.length;
+});
+
+const _currentPage = ref(props.value ?? 0);
+const _currentPageModelValue = computed({
 	get() {
-		return props.modelValue;
+		return typeof props.modelValue === "undefined" ?
+					 _currentPage.value :
+					 props.modelValue;
 	},
 	set(v: number) {
-		emit("update:modelValue", v);
+		if ( typeof props.modelValue === "undefined" ) {
+			_currentPage.value = v;
+		} else {
+			emit("update:modelValue", v);
+		}
 	}
 });
 
-const items = computed(
+const _items = computed(
 	() => {
 		return Array.from(
-			{ length: props.totalPages },
+			{ length: _totalPagesCount.value },
 			(_, index) => ({
+				id: window.crypto.randomUUID(),
 				page: index + 1,
-				isActive: index + 1 === currentPage.value
+				isActive: index + 1 === _currentPageModelValue.value,
+				ctx: props.items[index] ?? undefined
 			})
 		);
 	}
 );
 
-const visibleItems = computed(() => {
-	return items.value.length <= 3 ?
-				 items.value :
-				 items.value.slice(
-					 Math.max(currentPage.value - 2, 0),
-					 Math.min(currentPage.value + 1, props.totalPages)
+const _visibleItems = computed(() => {
+	return _items.value.length <= 3 ?
+				 _items.value :
+				 _items.value.slice(
+					 Math.max(_currentPageModelValue.value - 2, 0),
+					 Math.min(_currentPageModelValue.value + 1, _totalPagesCount.value)
 				 );
 });
 
-const visibleFirstItem = computed(() => {
-	return !visibleItems.value.some(i => i.page === 1);
+const _visibleFirstItem = computed(() => {
+	return !_visibleItems.value.some(i => i.page === 1);
 });
 
-const visibleLastItem = computed(() => {
-	return !visibleItems.value.some(i => i.page === props.totalPages);
+const _visibleLastItem = computed(() => {
+	return !_visibleItems.value.some(i => i.page === _totalPagesCount.value);
 });
 
-const disabledArrowPrevious = computed(() => {
-	return currentPage.value - 1 < 1;
+const _disabledArrowPrevious = computed(() => {
+	return _currentPageModelValue.value - 1 < 1;
 });
 
-const visibleArrowPrevious = computed(() => {
-	return items.value.length > 1;
+const _visibleArrowPrevious = computed(() => {
+	return _items.value.length > 1;
 });
 
-const disabledArrowNext = computed(() => {
-	return currentPage.value + 1 > props.totalPages;
+const _disabledArrowNext = computed(() => {
+	return _currentPageModelValue.value + 1 > _totalPagesCount.value;
 });
 
-const visibleArrowNext = computed(() => {
-	return items.value.length > 1;
+const _visibleArrowNext = computed(() => {
+	return _items.value.length > 1;
 });
 
 function goTo(nth: number) {
-	currentPage.value = nth;
+	_currentPageModelValue.value = nth;
+	emit("navigate", { page: nth, data: props.items?.[nth] });
 }
 </script>
 
@@ -69,71 +89,82 @@ function goTo(nth: number) {
 	<div class="list-view-pagination">
 		<ul class="pagination">
 			<li
-				v-show="visibleArrowPrevious"
+				v-show="_visibleArrowPrevious"
 				data-type="previous"
 				class="pagination__item"
-				:class="{ 'is-disabled': disabledArrowPrevious }"
-				@click="goTo(modelValue - 1)"
+				:class="{ 'is-disabled': _disabledArrowPrevious }"
+				@click="goTo(_currentPageModelValue - 1)"
 			>
-				<WIcon class="page-link" name="chevron-left" />
+				<WIcon name="chevron-left" />
 			</li>
 
 			<!--FIRST-->
 			<li
-				v-show="visibleFirstItem"
+				v-show="_visibleFirstItem"
 				data-type="nth"
 				class="pagination__item"
 				@click="goTo(1)"
 			>
-        <span class="page-link">
-          {{ 1 }}
-        </span>
+				<slot name="itemFirst" :page="1">
+					<div>
+						{{ 1 }}
+					</div>
+				</slot>
 			</li>
 
 			<li
-				v-if="visibleFirstItem"
+				v-if="_visibleFirstItem"
 				data-type="dots" class="pagination__item">
 				<WIcon class="" name="three-dots" />
 			</li>
 
 			<li
-				v-for="i in visibleItems"
-				:key="i.page"
+				v-for="item in _visibleItems"
+				:key="item.id"
 				data-type="nth"
 				class="pagination__item"
-				:class="{ 'is-active': i.isActive }"
-				@click="goTo(i.page)"
+				:class="{ 'is-active': item.isActive }"
+				@click="goTo(item.page)"
 			>
-        <span>
-          {{ i.page }}
-        </span>
+				<slot
+					name="item"
+					:isActive="item.isActive"
+					:item="item.ctx"
+					:page="item.page"
+				>
+					<div>
+						{{ item.page }}
+					</div>
+				</slot>
 			</li>
 
 
 			<li
-				v-if="visibleLastItem"
+				v-if="_visibleLastItem"
 				data-type="dots" class="pagination__item">
 				<WIcon class="" name="three-dots" />
 			</li>
 
 			<!--LAST-->
 			<li
-				v-show="visibleLastItem"
+				v-show="_visibleLastItem"
 				data-type="nth"
 				class="pagination__item"
-				@click="goTo(totalPages)"
+				@click="goTo(_totalPagesCount)"
 			>
-        <span class="page-link">
-          {{ totalPages }}
-        </span>
+				<slot name="itemLast" :page="_totalPagesCount">
+					<div>
+						{{ _totalPagesCount }}
+					</div>
+				</slot>
 			</li>
 
 			<li
-				v-show="visibleArrowNext"
+				v-show="_visibleArrowNext"
 				data-type="next"
 				class="pagination__item"
-				:class="{ 'is-disabled': disabledArrowNext }"
-				@click="goTo(modelValue + 1)"
+				:class="{ 'is-disabled': _disabledArrowNext }"
+				@click="goTo(_currentPageModelValue + 1)"
 			>
 				<WIcon class="page-link" name="chevron-right" />
 			</li>

@@ -1,10 +1,14 @@
 <script setup lang="ts">
-import { WFullscreenContainer, WNavHorizontal, WResizerContainer } from "@/components";
-import { useExcerptDetailStore }                                   from "@/store";
-import { createTabs }                                              from "@/views/home/components/ExcerptDetail/helpers";
-import type { TabItem }                                            from "@/views/home/components/ExcerptDetail/types";
-import { storeToRefs }                                             from "pinia";
-import { shallowRef }                                              from "vue";
+import { WFullscreenContainer, WNavHorizontal, WPagination, WResizerContainer } from "@/components";
+import { useExcerptDetailStore }                                                from "@/store";
+import {
+	createTabs
+}                                                                               from "@/views/home/components/ExcerptDetail/helpers";
+import type {
+	TabItem
+}                                                                               from "@/views/home/components/ExcerptDetail/types";
+import { storeToRefs }                                                          from "pinia";
+import { shallowRef }                                                           from "vue";
 
 const excerptDetailStore = useExcerptDetailStore();
 const { opened, excerpt } = storeToRefs(excerptDetailStore);
@@ -15,10 +19,11 @@ const currentTab = shallowRef<TabItem>(tabItems.value[0]!);
 
 <template>
 	<WFullscreenContainer
+		class="excerptDetail"
 		v-if="opened"
 		:opened="opened"
 		@close="opened = false"
-		style="--header-padding-x: 3rem; --header-padding-y: 1.5rem; --body-padding-x: 0; --body-padding-y: 0;"
+		style="--header-padding-x: 3rem; --body-padding-x: 0; --body-padding-y: 0;"
 	>
 		<template #title>
 			<div>Název Cestopisu</div>
@@ -47,8 +52,9 @@ const currentTab = shallowRef<TabItem>(tabItems.value[0]!);
 								:is="currentTab.data.component"
 							/>
 						</div>
-						<div class="">
-							<!--Pagination-->
+
+						<div class="flex justify-center pb-6">
+							<WPagination :items="[1,2,3,4,5,6,7]" :value="3" />
 						</div>
 					</div>
 				</div>
