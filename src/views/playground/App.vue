@@ -1,30 +1,18 @@
 <script setup lang="ts">
-import { WPagination, WResizerContainer } from "@/components";
+import { WPagesStepper } from "@/components";
 </script>
 
 <template>
 	<div class="h-screen bg-brown-semi justify-center flex items-center">
 		<div class="w-[1600px] h-full">
-			<WPagination :total-pages="12" :model-value="6" />
-			<!--			<WResizerContainer class="h-full">-->
-			<!--				<template #left>-->
-			<!--					<div class="h-full w-full bg-tertiary flex items-center justify-center">-->
-			<!--						<p>-->
-			<!--							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est hic necessitatibus odio placeat, ratione-->
-			<!--							repellat.-->
-			<!--						</p>-->
-			<!--					</div>-->
-			<!--				</template>-->
-
-			<!--				<template #right>-->
-			<!--					<div class="h-full w-full bg-yellow flex items-center justify-center">-->
-			<!--						<p>-->
-			<!--							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est hic necessitatibus odio placeat, ratione-->
-			<!--							repellat.-->
-			<!--						</p>-->
-			<!--					</div>-->
-			<!--				</template>-->
-			<!--			</WResizerContainer>-->
+			<WPagesStepper
+				hide-add-btn
+				:max="0"
+				:min="0"
+				:model-value="0"
+				img-alt="Page ..."
+				img-src="https://vdc.olc.cz/media/saved_pages/dd871e73-50fa-4e6c-9dfb-f11300c34de3/4bb9d779-435e-11dd-b505-00145e5790ea_koGygSo.jpg"
+			/>
 		</div>
 	</div>
 </template>

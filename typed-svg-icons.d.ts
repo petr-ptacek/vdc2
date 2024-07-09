@@ -19,6 +19,7 @@ declare interface _SVGIcons_ {
 	"logo-university-palacky": "logo-university-palacky";
 	"map-pin": "map-pin";
 	"pencil": "pencil";
+	"plus-circle": "plus-circle";
 	"printer": "printer";
 	"question-mark-circle": "question-mark-circle";
 	"search": "search";
