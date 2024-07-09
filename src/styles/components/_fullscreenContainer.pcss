@@ -1,5 +1,10 @@
 .fullscreen-container {
 	--padding-x: 3rem;
+	--header-padding-y: 2rem;
+	--header-padding-x: 2rem;
+
+	--body-padding-y: 0;
+	--body-padding-x: var(--header-padding-x);
 
 	width: 0;
 	height: 0;
@@ -21,7 +26,7 @@
 
 	.fullscreen-container-header {
 		flex: 0;
-		padding: 1rem var(--padding-x);
+		padding: var(--header-padding-y) var(--header-padding-x);
 		background-color: theme("colors.white");
 		box-shadow: 0 0 15px rgba(21, 21, 21, 0.2);
 		z-index: 1;
@@ -33,7 +38,7 @@
 
 	.fullscreen-container-body {
 		flex: 1;
-		padding: 0 var(--padding-x);
+		padding: var(--body-padding-y) var(--body-padding-x);
 	}
 }
 

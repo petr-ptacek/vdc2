@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { WFullscreenContainer, WNavHorizontal } from "@/components";
-import { useExcerptDetailStore } from "@/store";
-import { createTabs }            from "@/views/home/components/ExcerptDetail/helpers";
-import type { TabItem }          from "@/views/home/components/ExcerptDetail/types";
-import { storeToRefs }           from "pinia";
-import { shallowRef }                           from "vue";
+import { WFullscreenContainer, WNavHorizontal, WResizerContainer } from "@/components";
+import { useExcerptDetailStore }                                   from "@/store";
+import { createTabs }                                              from "@/views/home/components/ExcerptDetail/helpers";
+import type { TabItem }                                            from "@/views/home/components/ExcerptDetail/types";
+import { storeToRefs }                                             from "pinia";
+import { shallowRef }                                              from "vue";
 
 const excerptDetailStore = useExcerptDetailStore();
 const { opened, excerpt } = storeToRefs(excerptDetailStore);
@@ -18,26 +18,43 @@ const currentTab = shallowRef<TabItem>(tabItems.value[0]!);
 		v-if="opened"
 		:opened="opened"
 		@close="opened = false"
+		style="--header-padding-x: 3rem; --header-padding-y: 1.5rem; --body-padding-x: 0; --body-padding-y: 0;"
 	>
 		<template #title>
-			{{ excerpt!.name }}
+			<div>Název Cestopisu</div>
 		</template>
 
-		<div class="flex flex-col h-full">
-			<div class="">
-				<WNavHorizontal
-					:items="tabItems"
-					v-model="currentTab"
-				/>
-			</div>
+		<!--Content-->
+		<WResizerContainer>
 
-			<!--Content-->
-			<div class="pt-4 flex-1">
-				<component
-					v-if="currentTab.data"
-					:is="currentTab.data.component"
-				/>
-			</div>
-		</div>
+			<template #left>
+				<div class="px-12 h-full w-full  flex flex-col overflow-x-auto">
+					<WNavHorizontal
+						:items="tabItems"
+						v-model="currentTab"
+					>
+						<template #default="{ item }">
+							<div class="text-nowrap whitespace-nowrap">
+								{{ item.label }}
+							</div>
+						</template>
+					</WNavHorizontal>
+
+					<div class="flex-1">
+						<component
+							v-if="currentTab.data"
+							:is="currentTab.data.component"
+						/>
+					</div>
+				</div>
+			</template>
+
+			<template #right>
+				<div class="h-full w-full">
+					Page Detail here
+				</div>
+			</template>
+
+		</WResizerContainer>
 	</WFullscreenContainer>
 </template>

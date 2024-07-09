@@ -2,10 +2,6 @@
 import { computed, onMounted, onUnmounted, reactive, watch }         from "vue";
 import type { WResizerContainerEmit, WResizerContainerProps, State } from "./types";
 
-defineOptions({
-	name: "ResizerContainer"
-});
-
 const props = withDefaults(
 	defineProps<WResizerContainerProps>(),
 	{

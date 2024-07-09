@@ -27,7 +27,9 @@ defineSlots<{
 				@click="itemClickHandler(item)"
 			>
 				<slot :item="item">
-					{{ item.label }}
+					<div class="item-label">
+						{{ item.label }}
+					</div>
 				</slot>
 
 				<div class="item-splitter">
