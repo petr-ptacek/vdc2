@@ -15,6 +15,7 @@ declare interface _SVGIcons_ {
 	"digeocat-lib": "digeocat-lib";
 	"document-arrow-up": "document-arrow-up";
 	"document-text": "document-text";
+	"eye-circle": "eye-circle";
 	"logo-eu": "logo-eu";
 	"logo-university-palacky": "logo-university-palacky";
 	"map-pin": "map-pin";

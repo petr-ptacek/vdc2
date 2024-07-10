@@ -8,3 +8,4 @@ export * from "./DropdownMenu";
 export * from "./Tooltip";
 export * from "./Pagination";
 export * from "./PagesStepper";
+export * from "./CardPage";
