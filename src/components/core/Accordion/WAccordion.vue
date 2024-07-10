@@ -12,7 +12,7 @@ const props = withDefaults(
 const emit = defineEmits<WAccordionEmits>();
 
 // OPENED STATE INTERNAL VALUE
-const _opened = ref(false);
+const _opened = ref(props._opened ?? false);
 const _openedModelValue = computed<boolean>({
 	get() {
 		return typeof props.opened === "undefined" ?

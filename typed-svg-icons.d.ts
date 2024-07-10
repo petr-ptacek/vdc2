@@ -2,6 +2,7 @@ declare interface _SVGIcons_ {
 	"ai-brain": "ai-brain";
 	"ai-network": "ai-network";
 	"ai-search": "ai-search";
+	"arrow-right": "arrow-right";
 	"bars-3": "bars-3";
 	"bars-4": "bars-4";
 	"bars-arrow-down": "bars-arrow-down";
