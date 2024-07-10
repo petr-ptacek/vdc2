@@ -51,15 +51,15 @@ const currentTab = shallowRef<TabItem>(tabItems.value[0]!);
 						</template>
 					</WNavHorizontal>
 
-					<div class="flex-1 flex flex-col pt-5">
-						<div class="flex-1">
+					<div class="flex flex-1 overflow-hidden flex-col pt-5">
+						<div class="h-full overflow-auto">
 							<component
 								v-if="currentTab.data"
 								:is="currentTab.data.component"
 							/>
 						</div>
 
-						<div class="flex justify-center pb-6">
+						<div class="flex justify-center pb-6 pt-6 relative z-10">
 							<WPagination :total-pages="40" :value="3" />
 						</div>
 					</div>
