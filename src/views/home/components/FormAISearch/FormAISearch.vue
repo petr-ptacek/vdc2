@@ -25,7 +25,7 @@ function openModalHowToUseAI() {
 			v-model="searchValue"
 			class="flex-1"
 			prepend-icon="ai-search"
-			placeholder="Zadejte se naší AI"
+			placeholder="Zeptej se naší AI"
 		/>
 
 
