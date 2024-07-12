@@ -37,7 +37,7 @@ const _items = computed(
 		return Array.from(
 			{ length: _totalPagesCount.value },
 			(_, index) => ({
-				id: window.crypto.randomUUID(),
+				id: index.toString(),
 				page: index + 1,
 				isActive: index + 1 === _currentPageModelValue.value,
 				ctx: props.items[index] ?? undefined
